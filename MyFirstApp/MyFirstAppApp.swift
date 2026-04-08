@@ -1,17 +1,29 @@
-//
-//  MyFirstAppApp.swift
-//  MyFirstApp
-//
-//  Created by Dhruv Patel on 11/03/26.
-//
-
 import SwiftUI
+
+enum StorageKeys {
+    static let isDarkMode = "isDarkModeEnabled"
+    static let hasCompletedOnboarding = "hasCompletedOnboarding"
+}
 
 @main
 struct MyFirstAppApp: App {
+    @StateObject private var authStore = AuthStore()
+    @AppStorage(StorageKeys.isDarkMode) private var isDarkModeEnabled = false
+    @AppStorage(StorageKeys.hasCompletedOnboarding) private var hasCompletedOnboarding = false
+    
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            if !hasCompletedOnboarding {
+                OnboardingView()
+            } else if authStore.isAuthenticated {
+                MainTabView()
+                    .environmentObject(authStore)
+                    .preferredColorScheme(isDarkModeEnabled ? .dark : .light)
+            } else {
+                LoginView()
+                    .environmentObject(authStore)
+                    .preferredColorScheme(isDarkModeEnabled ? .dark : .light)
+            }
         }
     }
 }

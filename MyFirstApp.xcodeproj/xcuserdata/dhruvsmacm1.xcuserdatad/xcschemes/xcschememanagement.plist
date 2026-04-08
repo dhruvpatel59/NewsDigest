@@ -7,7 +7,25 @@
 		<key>MyFirstApp.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
+			<integer>1</integer>
+		</dict>
+		<key>NewsWidget.swiftExtension.xcscheme_^#shared#^_</key>
+		<dict>
+			<key>orderHint</key>
 			<integer>0</integer>
+		</dict>
+	</dict>
+	<key>SuppressBuildableAutocreation</key>
+	<dict>
+		<key>3486C0952F80041400A0EBD2</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>34A978FC2F61AD7A007F80A9</key>
+		<dict>
+			<key>primary</key>
+			<true/>
 		</dict>
 	</dict>
 </dict>
