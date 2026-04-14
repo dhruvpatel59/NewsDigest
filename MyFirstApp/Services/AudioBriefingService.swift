@@ -44,7 +44,8 @@ class AudioBriefingService: NSObject, ObservableObject, AVSpeechSynthesizerDeleg
            ?? AVSpeechSynthesisVoice(language: "en-US")
         
         utterance.voice = voice
-        utterance.rate = selectedPersona.id == "daniel" ? 0.54 : 0.52 // British accent reads slightly faster
+        // Slower speech rate for better comprehension during news briefings
+        utterance.rate = selectedPersona.id == "daniel" ? 0.48 : 0.45
         utterance.pitchMultiplier = 0.95
         utterance.postUtteranceDelay = 0.5
         
