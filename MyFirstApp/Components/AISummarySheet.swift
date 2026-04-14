@@ -19,10 +19,12 @@ struct AISummarySheet: View {
     
     var body: some View {
         ZStack {
-            // Background Layer: Deep Premium Gradient
-            Color.black.ignoresSafeArea()
+            // Background Layer: Premium Adaptive Background
+            Color(uiColor: .systemBackground).ignoresSafeArea()
+            
+            // Subtle adaptive gradient for depth
             LinearGradient(
-                colors: [Color.blue.opacity(0.15), Color.black],
+                colors: [Color.blue.opacity(0.12), Color.clear],
                 startPoint: .topLeading,
                 endPoint: .bottomTrailing
             ).ignoresSafeArea()
@@ -42,9 +44,8 @@ struct AISummarySheet: View {
                             HStack(spacing: 12) {
                                 ZStack {
                                     Circle()
-                                        .fill(Color.blue.opacity(0.2))
+                                        .fill(Color.blue.opacity(0.1))
                                         .frame(width: 40, height: 40)
-                                        .blur(radius: 8)
                                     
                                     Image(systemName: "sparkles")
                                         .foregroundStyle(
@@ -122,14 +123,14 @@ struct AISummarySheet: View {
                             
                             Text(article.title)
                                 .font(.system(size: 24, weight: .bold, design: .serif))
-                                .foregroundColor(.white)
+                                .foregroundColor(.primary)
                                 .fixedSize(horizontal: false, vertical: true)
                         }
                         .padding(.top, 20)
                         
                         // Divider
                         Rectangle()
-                            .fill(LinearGradient(colors: [.blue.opacity(0.3), .clear], startPoint: .leading, endPoint: .trailing))
+                            .fill(LinearGradient(colors: [.blue.opacity(0.2), .clear], startPoint: .leading, endPoint: .trailing))
                             .frame(height: 1)
                         
                         // Main Content Area
@@ -179,7 +180,7 @@ struct AISummarySheet: View {
                     Text(bullet)
                         .font(.system(size: 17, weight: .medium, design: .rounded))
                         .lineSpacing(6)
-                        .foregroundColor(.white.opacity(0.95))
+                        .foregroundColor(.primary.opacity(0.9))
                 }
                 .opacity(animateContent ? 1 : 0)
                 .offset(y: animateContent ? 0 : 20)

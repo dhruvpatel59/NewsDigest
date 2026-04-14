@@ -1,6 +1,7 @@
 import Foundation
 import Combine
 import SwiftUI
+internal import CoreLocation
 
 // MARK: - Gemini API Request/Response Models
 
@@ -89,11 +90,33 @@ class AISummarizerService: ObservableObject {
             return cachedAnalysis
         }
         
+        // HYPER-LOCAL CONTEXT PREPARATION
+        var localContext = ""
+        let location = LocationManager.shared.overriddenLocation ?? LocationManager.shared.localArea ?? "their local area"
+        
+        // Simulating the industry retrieval (can be connected to AuthStore/User later)
+        let simulatedIndustry = "Technology and Finance" 
+        
+        // We provide context if we have a location (manual OR automatic)
+        if LocationManager.shared.overriddenLocation != nil || 
+           LocationManager.shared.authorizationStatus == .authorizedWhenInUse || 
+           LocationManager.shared.authorizationStatus == .authorizedAlways {
+            localContext = """
+            
+            USER CONTEXT FOR HYPER-LOCAL IMPACT:
+            - Location: \(location)
+            - Industry/Interests: \(simulatedIndustry)
+            
+            When writing the `globalImpact` sentence, if this news has an indirect economic, social, or industrial impact on this specific user context, point it out. Make it personal to their location or industry.
+            """
+        }
+        
         let prompt = """
         Analyze this article and provide a holistic briefing in STRICT JSON format.
         
         Article Title: \(article.title)
         Article Summary: \(article.summary)
+        \(localContext)
 
         Required JSON structure:
         - summaryPoints: (array of 3 strings)

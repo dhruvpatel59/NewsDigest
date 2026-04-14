@@ -7,7 +7,7 @@ struct DigestView: View {
     @EnvironmentObject var historyStore: ReadingHistoryStore
     @EnvironmentObject var networkMonitor: NetworkMonitor
     @StateObject private var store = NewsStore()
-    @StateObject private var locationManager = LocationManager()
+    @StateObject private var locationManager = LocationManager.shared
     
     @State private var hasRequestedData = false
     @State private var selectedTopic: String? = nil
@@ -19,6 +19,11 @@ struct DigestView: View {
         }
     }
     @State private var articleToRead: Article?
+    
+    // Manual Location Search
+    @State private var showingLocationSearch = false
+    @State private var locationSearchText = ""
+    @FocusState private var isSearchFocused: Bool
 
     var body: some View {
         NavigationStack {
@@ -40,6 +45,18 @@ struct DigestView: View {
                                 offlineWarningBar
                             }
                             
+                            SectionHeaderView(
+                                title: selectedTopic ?? "Latest in \(locationManager.displayLocation)",
+                                icon: selectedTopic != nil ? "magnifyingglass" : "globe",
+                                actionIcon: "location.magnifyingglass",
+                                onAction: { withAnimation(.spring()) { showingLocationSearch.toggle(); isSearchFocused = true } }
+                            )
+                            
+                            if showingLocationSearch {
+                                manualLocationSearchBar
+                                    .transition(.move(edge: .top).combined(with: .opacity))
+                            }
+                            
                             SwipeTipCard()
                             
                             TrendingTopicsBar(selectedTopic: $selectedTopic) { topic in
@@ -49,11 +66,6 @@ struct DigestView: View {
                                     refreshNews()
                                 }
                             }
-                            
-                            SectionHeaderView(
-                                title: selectedTopic ?? "Latest from \(locationManager.countryCode?.uppercased() ?? "the World")",
-                                icon: selectedTopic != nil ? "magnifyingglass" : "globe"
-                            )
                             
                             if store.isFetching && store.articles.isEmpty {
                                 ForEach(0..<4, id: \.self) { _ in
@@ -199,5 +211,60 @@ extension DigestView {
         .padding(32)
         .glassPanel()
         .padding(20)
+    }
+    private var manualLocationSearchBar: some View {
+        HStack(spacing: 12) {
+            HStack {
+                Image(systemName: "mappin.and.ellipse")
+                    .foregroundColor(.accentColor)
+                
+                TextField("Enter City (e.g. Mumbai)", text: $locationSearchText)
+                    .font(.subheadline)
+                    .focused($isSearchFocused)
+                    .submitLabel(.search)
+                    .onSubmit {
+                        performManualLocationSearch()
+                    }
+                
+                if !locationSearchText.isEmpty {
+                    Button {
+                        locationSearchText = ""
+                        locationManager.overriddenLocation = nil
+                        refreshNews()
+                    } label: {
+                        Image(systemName: "xmark.circle.fill")
+                            .foregroundColor(.secondary)
+                    }
+                }
+            }
+            .padding(12)
+            .background(Color.primary.opacity(0.05))
+            .cornerRadius(12)
+            
+            Button {
+                performManualLocationSearch()
+            } label: {
+                Text("Scan")
+                    .fontWeight(.bold)
+                    .foregroundColor(.white)
+                    .padding(.horizontal, 16)
+                    .padding(.vertical, 12)
+                    .background(Color.accentColor)
+                    .cornerRadius(12)
+            }
+        }
+        .padding(.bottom, 8)
+    }
+    
+    private func performManualLocationSearch() {
+        guard !locationSearchText.isEmpty else { return }
+        HapticManager.shared.trigger(.medium)
+        
+        locationManager.overriddenLocation = locationSearchText
+        withAnimation { showingLocationSearch = false }
+        
+        Task {
+            await store.fetchBySearch(query: locationSearchText, forceRefresh: true)
+        }
     }
 }

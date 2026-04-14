@@ -3,10 +3,17 @@ internal import CoreLocation
 import Combine
 
 class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
+    static let shared = LocationManager()
     private let manager = CLLocationManager()
     
     @Published var countryCode: String?
+    @Published var localArea: String? // Captures City, State for hyper-local impact
+    @Published var overriddenLocation: String? // Manually entered value
     @Published var authorizationStatus: CLAuthorizationStatus
+    
+    var displayLocation: String {
+        overriddenLocation ?? localArea ?? countryCode?.uppercased() ?? "the World"
+    }
     
     override init() {
         self.authorizationStatus = manager.authorizationStatus
@@ -44,13 +51,27 @@ class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
             guard let self = self else { return }
             if let error = error {
                 self.countryCode = "us" // Global English default fallback
+                self.localArea = nil
                 return
             }
             
-            if let country = placemarks?.first?.isoCountryCode?.lowercased() {
-                self.countryCode = country
+            if let placemark = placemarks?.first {
+                self.countryCode = placemark.isoCountryCode?.lowercased() ?? "us"
+                
+                // Hyper-Local data extraction
+                let city = placemark.locality ?? ""
+                let state = placemark.administrativeArea ?? ""
+                
+                if !city.isEmpty && !state.isEmpty {
+                    self.localArea = "\(city), \(state)"
+                } else if !city.isEmpty {
+                    self.localArea = city
+                } else {
+                    self.localArea = placemark.country
+                }
             } else {
                 self.countryCode = "us"
+                self.localArea = nil
             }
         }
     }

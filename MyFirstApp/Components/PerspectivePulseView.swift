@@ -39,21 +39,22 @@ struct PerspectivePulseView: View {
                     // Reference Axis - Center
                     RuleMark(x: .value("Middle", 0))
                         .lineStyle(StrokeStyle(lineWidth: 0.5, dash: [2]))
-                        .foregroundStyle(.gray.opacity(0.3))
+                        .foregroundStyle(.secondary.opacity(0.3))
                     RuleMark(y: .value("Middle", 0))
                         .lineStyle(StrokeStyle(lineWidth: 0.5, dash: [2]))
-                        .foregroundStyle(.gray.opacity(0.3))
+                        .foregroundStyle(.secondary.opacity(0.3))
                 }
                 .chartXScale(domain: -1...1)
                 .chartYScale(domain: -1...1)
                 .chartXAxis {
                     AxisMarks(values: [-1, 0, 1]) { value in
                         AxisGridLine()
+                            .foregroundStyle(.secondary.opacity(0.2))
                         AxisValueLabel {
                             if let v = value.as(Double.self) {
-                                if v < 0 { Text("Critical") }
-                                else if v > 0 { Text("Corporate") }
-                                else { Text("Neutral") }
+                                if v < 0 { Text("Critical").font(.caption2) }
+                                else if v > 0 { Text("Corporate").font(.caption2) }
+                                else { Text("Neutral").font(.caption2) }
                             }
                         }
                     }
@@ -61,10 +62,11 @@ struct PerspectivePulseView: View {
                 .chartYAxis {
                     AxisMarks(values: [-1, 0, 1]) { value in
                         AxisGridLine()
+                            .foregroundStyle(.secondary.opacity(0.2))
                         AxisValueLabel {
                             if let v = value.as(Double.self) {
-                                if v < 0 { Text("Neg") }
-                                else if v > 0 { Text("Pos") }
+                                if v < 0 { Text("Neg").font(.caption2) }
+                                else if v > 0 { Text("Pos").font(.caption2) }
                                 else { Text("") }
                             }
                         }
@@ -72,7 +74,7 @@ struct PerspectivePulseView: View {
                 }
                 .frame(height: 180)
                 .padding()
-                .background(Color.black.opacity(0.2))
+                .background(Color.primary.opacity(0.03))
                 .cornerRadius(12)
             }
             
@@ -88,16 +90,16 @@ struct PerspectivePulseView: View {
                 Text(analysis.theOtherSide)
                     .font(.system(size: 15, weight: .medium, design: .serif))
                     .italic()
-                    .foregroundColor(.white.opacity(0.8))
+                    .foregroundColor(.primary)
                     .padding()
                     .frame(maxWidth: .infinity, alignment: .leading)
                     .background(
                         RoundedRectangle(cornerRadius: 12)
-                            .fill(Color.orange.opacity(0.05))
+                            .fill(Color.orange.opacity(0.08))
                     )
                     .overlay(
                         RoundedRectangle(cornerRadius: 12)
-                            .stroke(Color.orange.opacity(0.1), lineWidth: 1)
+                            .stroke(Color.orange.opacity(0.2), lineWidth: 1)
                     )
             }
             
@@ -107,11 +109,11 @@ struct PerspectivePulseView: View {
                 .foregroundColor(.secondary)
         }
         .padding()
-        .background(Color.white.opacity(0.03))
+        .background(Color.primary.opacity(0.04))
         .cornerRadius(20)
         .overlay(
             RoundedRectangle(cornerRadius: 20)
-                .stroke(Color.white.opacity(0.05), lineWidth: 1)
+                .stroke(Color.primary.opacity(0.05), lineWidth: 1)
         )
     }
 }
