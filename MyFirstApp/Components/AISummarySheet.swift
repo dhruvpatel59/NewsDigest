@@ -108,7 +108,7 @@ struct AISummarySheet: View {
                                         
                                         // Share Button
                                         Button {
-                                            ArticleImageSharer.share(article, aiSummary: summaryText)
+                                            ArticleImageSharer.share(article, aiSummary: summaryText, analysis: perspectiveAnalysis)
                                         } label: {
                                             Image(systemName: "square.and.arrow.up")
                                                 .font(.system(size: 16, weight: .bold))

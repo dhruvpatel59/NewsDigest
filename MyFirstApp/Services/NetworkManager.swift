@@ -43,6 +43,9 @@ actor NetworkManager {
         
         guard let httpResponse = response as? HTTPURLResponse, 
               (200...299).contains(httpResponse.statusCode) else {
+            let statusCode = (response as? HTTPURLResponse)?.statusCode ?? 0
+            let body = String(data: data, encoding: .utf8) ?? "No body"
+            print("--- NetworkManager Error: HTTP \(statusCode) | Body: \(body) ---")
             throw NetworkError.invalidResponse
         }
         

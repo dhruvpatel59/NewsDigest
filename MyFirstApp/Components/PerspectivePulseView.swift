@@ -11,6 +11,7 @@ struct PerspectivePulseView: View {
             HStack {
                 Text("Pulse 360 Analysis")
                     .font(.headline.bold())
+                    .foregroundColor(.white)
                 Spacer()
                 Text(analysis.analyticalTone.uppercased())
                     .font(.system(size: 10, weight: .black))
@@ -25,7 +26,7 @@ struct PerspectivePulseView: View {
             VStack(alignment: .leading, spacing: 8) {
                 Text("Perspective Mapping")
                     .font(.caption)
-                    .foregroundColor(.secondary)
+                    .foregroundColor(.white.opacity(0.6))
                 
                 Chart {
                     // Current Article Point
@@ -74,7 +75,7 @@ struct PerspectivePulseView: View {
                 }
                 .frame(height: 180)
                 .padding()
-                .background(Color.primary.opacity(0.03))
+                .background(Color.black.opacity(0.2))
                 .cornerRadius(12)
             }
             
@@ -90,30 +91,31 @@ struct PerspectivePulseView: View {
                 Text(analysis.theOtherSide)
                     .font(.system(size: 15, weight: .medium, design: .serif))
                     .italic()
-                    .foregroundColor(.primary)
+                    .foregroundColor(.white.opacity(0.8))
                     .padding()
                     .frame(maxWidth: .infinity, alignment: .leading)
                     .background(
                         RoundedRectangle(cornerRadius: 12)
-                            .fill(Color.orange.opacity(0.08))
+                            .fill(Color.orange.opacity(0.05))
                     )
                     .overlay(
                         RoundedRectangle(cornerRadius: 12)
-                            .stroke(Color.orange.opacity(0.2), lineWidth: 1)
+                            .stroke(Color.orange.opacity(0.1), lineWidth: 1)
                     )
             }
             
             // Global Impact
             Label(analysis.globalImpact, systemImage: "globe.americas.fill")
                 .font(.caption)
-                .foregroundColor(.secondary)
+                .foregroundColor(.white.opacity(0.6))
         }
         .padding()
-        .background(Color.primary.opacity(0.04))
+        .background(Color.white.opacity(0.03))
         .cornerRadius(20)
         .overlay(
             RoundedRectangle(cornerRadius: 20)
-                .stroke(Color.primary.opacity(0.05), lineWidth: 1)
+                .stroke(Color.white.opacity(0.05), lineWidth: 1)
         )
+        .environment(\.colorScheme, .dark) // Forces the deep-dark minimalist aesthetic
     }
 }

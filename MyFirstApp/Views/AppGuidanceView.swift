@@ -39,6 +39,22 @@ struct AppGuidanceView: View {
                             )
                             
                             GuidanceCard(
+                                title: "Audio Briefings",
+                                description: "Tap the audio icon in any AI Summary to hear your news. You can even change the speaker's voice using the dropdown menu!",
+                                icon: "speaker.wave.3.fill",
+                                color: .pink,
+                                gestures: [:]
+                            )
+                            
+                            GuidanceCard(
+                                title: "Hyper-Local Search",
+                                description: "Want local news? Tap the location pin in the Digest header to manually search for any city. The AI will personalize the impact explicitly for that area.",
+                                icon: "location.magnifyingglass",
+                                color: .green,
+                                gestures: [:]
+                            )
+                            
+                            GuidanceCard(
                                 title: "Deep Dive",
                                 description: "Use the Broadcasters tab to follow specific RSS feeds from world-class news organizations or add your own.",
                                 icon: "antenna.radiowaves.left.and.right",

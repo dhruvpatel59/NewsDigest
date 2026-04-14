@@ -6,7 +6,8 @@ import SwiftUI
 
 struct ShareableArticleCard: View {
     let article: Article
-    var aiSummary: String? = nil // Default to nil for backward compatibility
+    var aiSummary: String? = nil
+    var analysis: Pulse360Analysis? = nil // Support for the pulse chart
     
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
@@ -67,6 +68,14 @@ struct ShareableArticleCard: View {
                     .background(Color.white.opacity(0.05))
                     .cornerRadius(12)
                 }
+                
+                // Add the Pulse Chart if available
+                if let analysis = analysis {
+                    PerspectivePulseView(analysis: analysis)
+                        // Override background scheme explicitly for the export card to ensure
+                        // it maintains extreme contrast against the black export background
+                        .environment(\.colorScheme, .dark) 
+                }
             }
             .padding(24)
             
@@ -93,11 +102,11 @@ struct ShareableArticleCard: View {
 struct ArticleImageSharer {
     
     @MainActor
-    static func share(_ article: Article, aiSummary: String? = nil) {
+    static func share(_ article: Article, aiSummary: String? = nil, analysis: Pulse360Analysis? = nil) {
         print("--- Pulse AI: Preparing Social Insight Card ---") // Debug log
         
         // 1. Prepare the Renderer
-        let shareView = ShareableArticleCard(article: article, aiSummary: aiSummary)
+        let shareView = ShareableArticleCard(article: article, aiSummary: aiSummary, analysis: analysis)
         let renderer = ImageRenderer(content: shareView)
         renderer.scale = 3.0
         
