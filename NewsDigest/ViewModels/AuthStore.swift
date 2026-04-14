@@ -7,7 +7,7 @@ class AuthStore: ObservableObject {
     @Published var currentUser: User?
     @Published var isAuthenticated: Bool = false
     
-    private let serviceName = "com.dhruvpatel.MyFirstApp.auth"
+    private let serviceName = "com.dhruvpatel.NewsDigest.auth"
     private let usersAccount = "saved_users_database"
     private let sessionAccount = "current_user_session"
     private var salt: String { PulseSecrets.authSalt }

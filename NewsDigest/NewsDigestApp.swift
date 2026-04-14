@@ -6,7 +6,7 @@ enum StorageKeys {
 }
 
 @main
-struct MyFirstAppApp: App {
+struct NewsDigestApp: App {
     @StateObject private var authStore = AuthStore()
     @AppStorage(StorageKeys.isDarkMode) private var isDarkModeEnabled = false
     @AppStorage(StorageKeys.hasCompletedOnboarding) private var hasCompletedOnboarding = false

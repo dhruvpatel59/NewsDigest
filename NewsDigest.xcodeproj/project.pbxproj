@@ -40,7 +40,7 @@
 		3486C0962F80041400A0EBD2 /* NewsWidget.swiftExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = NewsWidget.swiftExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		3486C0982F80041500A0EBD2 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
 		3486C09A2F80041600A0EBD2 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
-		34A978FD2F61AD7A007F80A9 /* MyFirstApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyFirstApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		34A978FD2F61AD7A007F80A9 /* NewsDigest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NewsDigest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
@@ -62,9 +62,9 @@
 			path = NewsWidget.swift;
 			sourceTree = "<group>";
 		};
-		34A978FF2F61AD7A007F80A9 /* MyFirstApp */ = {
+		34A978FF2F61AD7A007F80A9 /* NewsDigest */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
-			path = MyFirstApp;
+			path = NewsDigest;
 			sourceTree = "<group>";
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
@@ -101,7 +101,7 @@
 		34A978F42F61AD7A007F80A9 = {
 			isa = PBXGroup;
 			children = (
-				34A978FF2F61AD7A007F80A9 /* MyFirstApp */,
+				34A978FF2F61AD7A007F80A9 /* NewsDigest */,
 				3486C09C2F80041600A0EBD2 /* NewsWidget.swift */,
 				3486C0972F80041500A0EBD2 /* Frameworks */,
 				34A978FE2F61AD7A007F80A9 /* Products */,
@@ -111,7 +111,7 @@
 		34A978FE2F61AD7A007F80A9 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				34A978FD2F61AD7A007F80A9 /* MyFirstApp.app */,
+				34A978FD2F61AD7A007F80A9 /* NewsDigest.app */,
 				3486C0962F80041400A0EBD2 /* NewsWidget.swiftExtension.appex */,
 			);
 			name = Products;
@@ -142,9 +142,9 @@
 			productReference = 3486C0962F80041400A0EBD2 /* NewsWidget.swiftExtension.appex */;
 			productType = "com.apple.product-type.app-extension";
 		};
-		34A978FC2F61AD7A007F80A9 /* MyFirstApp */ = {
+		34A978FC2F61AD7A007F80A9 /* NewsDigest */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 34A979082F61AD7C007F80A9 /* Build configuration list for PBXNativeTarget "MyFirstApp" */;
+			buildConfigurationList = 34A979082F61AD7C007F80A9 /* Build configuration list for PBXNativeTarget "NewsDigest" */;
 			buildPhases = (
 				34A978F92F61AD7A007F80A9 /* Sources */,
 				34A978FA2F61AD7A007F80A9 /* Frameworks */,
@@ -157,13 +157,13 @@
 				3486C0AB2F80041900A0EBD2 /* PBXTargetDependency */,
 			);
 			fileSystemSynchronizedGroups = (
-				34A978FF2F61AD7A007F80A9 /* MyFirstApp */,
+				34A978FF2F61AD7A007F80A9 /* NewsDigest */,
 			);
-			name = MyFirstApp;
+			name = NewsDigest;
 			packageProductDependencies = (
 			);
-			productName = MyFirstApp;
-			productReference = 34A978FD2F61AD7A007F80A9 /* MyFirstApp.app */;
+			productName = NewsDigest;
+			productReference = 34A978FD2F61AD7A007F80A9 /* NewsDigest.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -184,7 +184,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 34A978F82F61AD7A007F80A9 /* Build configuration list for PBXProject "MyFirstApp" */;
+			buildConfigurationList = 34A978F82F61AD7A007F80A9 /* Build configuration list for PBXProject "NewsDigest" */;
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -198,7 +198,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				34A978FC2F61AD7A007F80A9 /* MyFirstApp */,
+				34A978FC2F61AD7A007F80A9 /* NewsDigest */,
 				3486C0952F80041400A0EBD2 /* NewsWidget.swiftExtension */,
 			);
 		};
@@ -265,7 +265,7 @@
 					"@executable_path/../../Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.dhruvpatel.MyFirstApp.NewsWidgetSwift;
+				PRODUCT_BUNDLE_IDENTIFIER = com.dhruvpatel.NewsDigest.NewsWidgetSwift;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				STRING_CATALOG_GENERATE_SYMBOLS = YES;
@@ -295,7 +295,7 @@
 					"@executable_path/../../Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.dhruvpatel.MyFirstApp.NewsWidgetSwift;
+				PRODUCT_BUNDLE_IDENTIFIER = com.dhruvpatel.NewsDigest.NewsWidgetSwift;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				STRING_CATALOG_GENERATE_SYMBOLS = YES;
@@ -436,6 +436,8 @@
 				DEVELOPMENT_TEAM = 9DJ33K95UF;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = NewsDigest;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.news";
 				INFOPLIST_KEY_NSSupportsLiveActivities = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -447,7 +449,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.dhruvpatel.MyFirstApp;
+				PRODUCT_BUNDLE_IDENTIFIER = com.dhruvpatel.NewsDigest;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SWIFT_APPROACHABLE_CONCURRENCY = YES;
@@ -469,6 +471,8 @@
 				DEVELOPMENT_TEAM = 9DJ33K95UF;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = NewsDigest;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.news";
 				INFOPLIST_KEY_NSSupportsLiveActivities = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -480,7 +484,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.dhruvpatel.MyFirstApp;
+				PRODUCT_BUNDLE_IDENTIFIER = com.dhruvpatel.NewsDigest;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SWIFT_APPROACHABLE_CONCURRENCY = YES;
@@ -504,7 +508,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		34A978F82F61AD7A007F80A9 /* Build configuration list for PBXProject "MyFirstApp" */ = {
+		34A978F82F61AD7A007F80A9 /* Build configuration list for PBXProject "NewsDigest" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				34A979062F61AD7C007F80A9 /* Debug */,
@@ -513,7 +517,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		34A979082F61AD7C007F80A9 /* Build configuration list for PBXNativeTarget "MyFirstApp" */ = {
+		34A979082F61AD7C007F80A9 /* Build configuration list for PBXNativeTarget "NewsDigest" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				34A979092F61AD7C007F80A9 /* Debug */,

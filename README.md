@@ -41,13 +41,13 @@
 
 1.  **Clone the Repo**:
     ```bash
-    git clone https://github.com/YOUR_USERNAME/MyFirstApp.git
-    cd MyFirstApp
+    git clone https://github.com/YOUR_USERNAME/NewsDigest.git
+    cd NewsDigest
     ```
 
 2.  **Configure Secrets**:
     - Locate the `.env.example` file in the root.
-    - Create a new file named `Secrets.plist` inside `MyFirstApp/Resources/`.
+    - Create a new file named `Secrets.plist` inside `NewsDigest/Resources/`.
     - Populate it with your keys following this structure:
     ```xml
     <?xml version="1.0" encoding="UTF-8"?>
@@ -63,7 +63,7 @@
     ```
 
 3.  **Build and Run**:
-    Open `MyFirstApp.xcodeproj` and hit `Cmd + R`.
+    Open `NewsDigest.xcodeproj` and hit `Cmd + R`.
 
 ---
 

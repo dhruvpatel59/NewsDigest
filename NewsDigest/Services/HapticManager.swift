@@ -8,8 +8,6 @@ class HapticManager {
     private let lightGenerator = UIImpactFeedbackGenerator(style: .light)
     private let mediumGenerator = UIImpactFeedbackGenerator(style: .medium)
     private let heavyGenerator = UIImpactFeedbackGenerator(style: .heavy)
-    private let selectionGenerator = UISelectionFeedbackGenerator()
-    private let notificationGenerator = UINotificationFeedbackGenerator()
     
     private init() {
         prepare()
@@ -19,8 +17,6 @@ class HapticManager {
         lightGenerator.prepare()
         mediumGenerator.prepare()
         heavyGenerator.prepare()
-        selectionGenerator.prepare()
-        notificationGenerator.prepare()
     }
     
     func trigger(_ style: UIImpactFeedbackGenerator.FeedbackStyle) {
@@ -32,13 +28,5 @@ class HapticManager {
         case .rigid: UIImpactFeedbackGenerator(style: .rigid).impactOccurred() // Rarely used
         @unknown default: break
         }
-    }
-    
-    func selectionChanged() {
-        selectionGenerator.selectionChanged()
-    }
-    
-    func notificationOccurred(_ type: UINotificationFeedbackGenerator.FeedbackType) {
-        notificationGenerator.notificationOccurred(type)
     }
 }

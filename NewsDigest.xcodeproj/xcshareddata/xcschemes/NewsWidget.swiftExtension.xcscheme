@@ -19,7 +19,7 @@
                BlueprintIdentifier = "3486C0952F80041400A0EBD2"
                BuildableName = "NewsWidget.swiftExtension.appex"
                BlueprintName = "NewsWidget.swiftExtension"
-               ReferencedContainer = "container:MyFirstApp.xcodeproj">
+               ReferencedContainer = "container:NewsDigest.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
          <BuildActionEntry
@@ -31,9 +31,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "34A978FC2F61AD7A007F80A9"
-               BuildableName = "MyFirstApp.app"
-               BlueprintName = "MyFirstApp"
-               ReferencedContainer = "container:MyFirstApp.xcodeproj">
+               BuildableName = "NewsDigest.app"
+               BlueprintName = "NewsDigest"
+               ReferencedContainer = "container:NewsDigest.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -60,9 +60,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "34A978FC2F61AD7A007F80A9"
-            BuildableName = "MyFirstApp.app"
-            BlueprintName = "MyFirstApp"
-            ReferencedContainer = "container:MyFirstApp.xcodeproj">
+            BuildableName = "NewsDigest.app"
+            BlueprintName = "NewsDigest"
+            ReferencedContainer = "container:NewsDigest.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <EnvironmentVariables>
@@ -96,9 +96,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "34A978FC2F61AD7A007F80A9"
-            BuildableName = "MyFirstApp.app"
-            BlueprintName = "MyFirstApp"
-            ReferencedContainer = "container:MyFirstApp.xcodeproj">
+            BuildableName = "NewsDigest.app"
+            BlueprintName = "NewsDigest"
+            ReferencedContainer = "container:NewsDigest.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

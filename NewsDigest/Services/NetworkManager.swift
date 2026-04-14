@@ -61,8 +61,4 @@ actor NetworkManager {
             throw NetworkError.decodingError
         }
     }
-    
-    func clearCache() {
-        cache.removeAll()
-    }
 }
