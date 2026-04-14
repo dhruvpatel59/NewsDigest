@@ -128,6 +128,11 @@ extension BroadcastersView {
                 historyStore.markAsRead(article)
             }
             .padding(.horizontal)
+            .swipeActions(
+                isBookmarked: bookmarkStore.isSaved(article),
+                onBookmark: { bookmarkStore.toggleBookmark(for: article) },
+                onShare: { shareArticle(article) }
+            )
             // Injecting Bookmark Actions via Context Menu
             .contextMenu {
                 Button {
@@ -138,6 +143,10 @@ extension BroadcastersView {
                 }
             }
         }
+    }
+    
+    private func shareArticle(_ article: Article) {
+        ArticleImageSharer.share(article)
     }
     
     private var emptyStateView: some View {
