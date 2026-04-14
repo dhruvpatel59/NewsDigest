@@ -96,4 +96,14 @@ We welcome contributions! Please see our [CONTRIBUTING.md](CONTRIBUTING.md) for 
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-*Crafted with excellence by [Dhruv Patel](https://github.com/dhruvpatel)*
+---
+
+## 👨‍💻 Author
+
+**Dhruv Patel**  
+iOS Developer & Open Source Enthusiast
+
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-Connect-blue?style=flat&logo=linkedin)](https://www.linkedin.com/in/dhruvpatel59/)
+[![GitHub](https://img.shields.io/badge/GitHub-Follow-black?style=flat&logo=github)](https://github.com/dhruvpatel59)
+
+*Crafted with excellence by [Dhruv Patel](https://github.com/dhruvpatel59)*
