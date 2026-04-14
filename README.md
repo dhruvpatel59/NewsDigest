@@ -40,8 +40,8 @@ NewsDigest/
 │   └── Shared/         # Reusable UI Components
 ├── Services/           # Core Logic (AI, Networking, Auth, Audio)
 ├── Resources/          # Assets, Fonts, and Localization
-├── Utilities/          # Extensions and Global Helpers
-└── Tests/              # Unit & UI Testing Suites
+└── Utilities/          # Extensions and Global Helpers
+Tests/                  # Unit & UI Testing Suites (Root Level)
 ```
 
 ---
