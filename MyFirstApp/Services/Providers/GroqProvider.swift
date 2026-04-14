@@ -36,6 +36,15 @@ class GroqProvider: SummaryProvider {
         let requestBody = GroqRequest(
             model: model,
             messages: [
+                GroqMessage(role: "system", content: """
+                You are a Senior Editorial Analyst for Pulse News AI. 
+                Your goal is to transform basic news summaries into deep, narrative insights.
+                - Each summary point should be descriptive (15-25 words).
+                - Capture specific names, numbers, or emotional context.
+                - Avoid generic phrases like "Microsoft is working on an agent."
+                - Instead, explain the technical 'why' and the specific customer impact.
+                - Ensure the tone is analytical yet engaging.
+                """),
                 GroqMessage(role: "user", content: prompt)
             ]
         )
