@@ -7,6 +7,12 @@
 
 **NewsDigest** is a premium iOS application that leverages Google’s Gemini AI to transform how you consume news. It provides multi-dimensional analysis, personalized audio briefings, and a glassmorphic UI for a modern reading experience.
 
+<p align="center">
+  <img src="Screenshots/MainScreen.png" width="280" />
+  <img src="Screenshots/PulseAI_Analysis_Screen.png" width="280" />
+  <img src="Screenshots/PulseAI_Summary_Screen.png" width="280" />
+</p>
+
 ---
 
 ## 🌟 Key Features
@@ -95,6 +101,34 @@ We welcome contributions! Please see our [CONTRIBUTING.md](CONTRIBUTING.md) for 
 ## 📄 License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## 📸 Screenshot Gallery
+
+<details>
+<summary>View More Screenshots</summary>
+
+### Authentication & Onboarding
+<p align="center">
+  <img src="Screenshots/LoginScreen.png" width="200" />
+  <img src="Screenshots/SignUp_Screen.png" width="200" />
+  <img src="Screenshots/Onboarding_Screen_1.png" width="200" />
+</p>
+
+### Explore & Features
+<p align="center">
+  <img src="Screenshots/Explore_More_News_Screen.png" width="200" />
+  <img src="Screenshots/BroadcastersScreen.png" width="200" />
+  <img src="Screenshots/FavoritesNews_Screen.png" width="200" />
+</p>
+
+### Insights & Profile
+<p align="center">
+  <img src="Screenshots/PulseAI_Library_Screen.png" width="200" />
+  <img src="Screenshots/Reading_List_Screen.png" width="200" />
+  <img src="Screenshots/Profile_Screen_1.png" width="200" />
+</p>
+
+</details>
 
 ---
 
