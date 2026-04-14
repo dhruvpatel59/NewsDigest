@@ -1,89 +1,94 @@
-# Pulse News AI 📰✨
+# NewsDigest 📰✨
 
-**Pulse News AI** is a premium iOS application designed to transform how you consume news. By combining real-time global journalism with Google’s Gemini AI, Pulse delivers insightful, unbiased, and personalized news briefings directly to your palm.
+[![Status](https://img.shields.io/badge/Status-Production--Ready-success)](#)
+[![Platform](https://img.shields.io/badge/Platform-iOS-blue)](#)
+[![Swift](https://img.shields.io/badge/Swift-6.0-orange)](#)
+[![License](https://img.shields.io/badge/License-MIT-green)](#)
 
-![Project Status](https://img.shields.io/badge/Status-Production--Ready-success)
-![Platform](https://img.shields.io/badge/Platform-iOS-blue)
-![Swift](https://img.shields.io/badge/Swift-6.0-orange)
-![License](https://img.shields.io/badge/License-MIT-green)
+**NewsDigest** is a premium iOS application that leverages Google’s Gemini AI to transform how you consume news. It provides multi-dimensional analysis, personalized audio briefings, and a glassmorphic UI for a modern reading experience.
 
 ---
 
 ## 🌟 Key Features
 
-*   **AI Pulse 360**: Multi-dimensional analysis of news stories covering Sentiment, Bias, and Global Impact.
-*   **Audio Briefing Personas**: Personalized AI anchors that narrate news summaries in real-time.
-*   **Resilient AI Engine**: Intelligent model rotator (Gemini 2.5/2.0/1.5) with automatic fallback and rate-limit handling.
-*   **Secure Secrets Management**: Git-ignored credential management via `Secrets.plist` and Actor-based `StorageManager`.
-*   **Modern UX**: Glassmorphic UI, rich haptics, and adaptive dark/light mode support.
+*   **AI Pulse 360**: Gain deeper insights with automated sentiment analysis, bias detection, and global impact evaluation for every story.
+*   **Audio Briefing Personas**: Listen to your news with high-fidelity AI anchors, customizable to your preference.
+*   **Resilient AI Engine**: Intelligent model rotation and fallback mechanisms ensure consistent performance even under heavy API usage.
+*   **Privacy-First Architecture**: Secure on-device storage and keychain integration for absolute data safety.
+*   **Premium UX**: Smooth animations, haptic feedback, and a refined design system built entirely in SwiftUI.
 
 ---
 
 ## 🛠 Tech Stack
 
-*   **UI**: SwiftUI
-*   **AI Engine**: Google Gemini API (v1beta/v1)
-*   **Networking**: Combine & Async/Await
-*   **Persistence**: Actor-based File Storage & Keychain
-*   **Feedback**: Haptic Engine (CoreHaptics)
+- **UI Framework**: SwiftUI
+- **AI Integration**: Google Gemini API (Pro/Flash/Lite)
+- **News Data**: GNews Global Feed
+- **Concurrency**: Swift Structured Concurrency (Async/Await)
+- **Networking**: Combine & URLSession
+- **Persistence**: Actor-based File Storage & Keychain Services
+
+---
+
+## 📁 Repository Structure
+
+```text
+NewsDigest/
+├── App/                # Main Entry Point & App Lifecycle
+├── Core/               # Shared Models, Constants, and Configuration
+├── Features/           # Modularized UI Features (Views & ViewModels)
+│   └── Shared/         # Reusable UI Components
+├── Services/           # Core Logic (AI, Networking, Auth, Audio)
+├── Resources/          # Assets, Fonts, and Localization
+├── Utilities/          # Extensions and Global Helpers
+└── Tests/              # Unit & UI Testing Suites
+```
 
 ---
 
 ## 🚀 Getting Started
 
-### Prerequisites
-*   Xcode 16.0+
-*   iOS 17.0+
-*   Google Gemini API Key ([Get one here](https://aistudio.google.com/))
-*   GNews API Key ([Get one here](https://gnews.io/))
+### 1. Prerequisites
+- **Xcode 16.0+**
+- **iOS 17.0+**
+- **Google AI Studio Key** ([Get one here](https://aistudio.google.com/))
+- **GNews API Key** ([Get one here](https://gnews.io/))
 
-### Installation & Setup
-
-1.  **Clone the Repo**:
-    ```bash
-    git clone https://github.com/YOUR_USERNAME/NewsDigest.git
-    cd NewsDigest
-    ```
-
-2.  **Configure Secrets**:
-    - Locate the `.env.example` file in the root.
-    - Create a new file named `Secrets.plist` inside `NewsDigest/Resources/`.
-    - Populate it with your keys following this structure:
-    ```xml
-    <?xml version="1.0" encoding="UTF-8"?>
-    <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
-    <plist version="1.0">
-    <dict>
-        <key>GEMINI_API_KEY</key>
-        <string>YOUR_KEY_HERE</string>
-        <key>GNEWS_API_KEY</key>
-        <string>YOUR_KEY_HERE</string>
-    </dict>
-    </plist>
-    ```
-
-3.  **Build and Run**:
-    Open `NewsDigest.xcodeproj` and hit `Cmd + R`.
-
----
-
-## 📁 Project Structure
-
-```text
-PulseNewsAI/
-├── App/                # Main Entry Point & Tab Controller
-├── Features/           # Feed, Explore, Profiles, Broadcaster Views
-├── Services/           # AI, Network, Audio, & RSS Providers
-├── Core/               # Data Models, Managers, & AppConfig
-├── Utilities/          # Extensions & Helpers
-└── Resources/          # Assets, Fonts, & Plists
+### 2. Installation
+```bash
+git clone https://github.com/dp-labs/NewsDigest.git
+cd NewsDigest
 ```
 
+### 3. Environment Configuration
+For security, API keys are managed via `Secrets.plist`. 
+- Navigate to `NewsDigest/Resources/`
+- Duplicate `Secrets.plist.example` and name it `Secrets.plist`.
+- Enter your API keys in the dictionary:
+```xml
+<dict>
+    <key>GEMINI_API_KEY</key>
+    <string>YOUR_KEY_HERE</string>
+    <key>GNEWS_API_KEY</key>
+    <string>YOUR_KEY_HERE</string>
+</dict>
+```
+
+### 4. Build & Run
+Open `NewsDigest.xcodeproj` in Xcode and press `Cmd + R` to run on a simulator or device.
+
 ---
 
-## 🛡️ Security
+## 🛡 Security & Safety
 
-This repository uses a strict security policy. Hardcoded keys are **forbidden**. All sensitive environment variables are loaded dynamically from `Secrets.plist`, which is excluded from version control via `.gitignore`.
+- **Zero Secret Leakage**: `Secrets.plist` is strictly ignored by version control.
+- **Data Integrity**: All network requests are handled via secure SSL pinning and modern concurrency patterns.
+
+---
+
+## 🤝 Contributing
+
+We welcome contributions! Please see our [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines on how to get started.
 
 ---
 
@@ -91,11 +96,4 @@ This repository uses a strict security policy. Hardcoded keys are **forbidden**.
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
----
-
-## 🤝 Contributing
-
-Contributions are welcome! Please read [CONTRIBUTING.md](CONTRIBUTING.md) to get started.
-
----
-*Created with ❤️ by Dhruv Patel*
+*Crafted with excellence by [Dhruv Patel](https://github.com/dhruvpatel)*
