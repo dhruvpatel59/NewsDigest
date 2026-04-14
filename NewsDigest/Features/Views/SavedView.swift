@@ -71,7 +71,6 @@ struct SavedView: View {
     }
 }
 
-// MARK: - Subcomponents
 extension SavedView {
     private var emptyStateView: some View {
         VStack(spacing: 20) {
@@ -99,3 +98,4 @@ extension SavedView {
     SavedView()
         .environmentObject(BookmarkStore())
 }
+

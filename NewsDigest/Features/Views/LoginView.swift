@@ -36,7 +36,6 @@ struct LoginView: View {
     }
 }
 
-// MARK: - Subcomponents
 extension LoginView {
     
     private var brandHeader: some View {
@@ -59,7 +58,6 @@ extension LoginView {
     
     private var authForm: some View {
         VStack(spacing: 0) {
-            // Email field
             HStack(spacing: 16) {
                 Image(systemName: "envelope.fill")
                     .foregroundColor(.accentColor)
@@ -75,7 +73,6 @@ extension LoginView {
             
             Divider().padding(.leading, 56).opacity(0.2)
             
-            // Password field
             HStack(spacing: 16) {
                 Image(systemName: "lock.fill")
                     .foregroundColor(.accentColor)
@@ -147,3 +144,4 @@ extension LoginView {
     LoginView()
         .environmentObject(AuthStore())
 }
+

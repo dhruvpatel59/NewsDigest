@@ -16,14 +16,12 @@ class NewsStore: ObservableObject {
         
         isFetching = true
         
-        // Parallel fetch with background priorities
         async let localArticles = fetchFrom(localEndpoint, forceRefresh: forceRefresh)
         async let cricketArticles = fetchFrom(cricketEndpoint, forceRefresh: forceRefresh)
         
         let local = await localArticles
         let cricket = await cricketArticles
         
-        // Efficient Merge & Dedupe 
         var seen = Set<String>()
         var merged: [Article] = []
         merged.reserveCapacity(local.count + cricket.count)
@@ -71,3 +69,4 @@ struct GNewsResponse: Decodable {
     let totalArticles: Int
     let articles: [Article]
 }
+

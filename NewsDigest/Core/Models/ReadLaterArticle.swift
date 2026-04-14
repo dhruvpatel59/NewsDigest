@@ -14,3 +14,4 @@ struct ReadLaterArticle: Identifiable, Codable, Hashable {
         self.readAt = nil
     }
 }
+

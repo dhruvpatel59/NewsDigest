@@ -83,7 +83,6 @@ struct BroadcastersView: View {
     }
 }
 
-// MARK: - Subcomponents
 extension BroadcastersView {
     
     private var sourceSelector: some View {
@@ -133,7 +132,6 @@ extension BroadcastersView {
                 onBookmark: { bookmarkStore.toggleBookmark(for: article) },
                 onShare: { shareArticle(article) }
             )
-            // Injecting Bookmark Actions via Context Menu
             .contextMenu {
                 Button {
                     bookmarkStore.toggleBookmark(for: article)
@@ -177,3 +175,4 @@ extension BroadcastersView {
         .environmentObject(BookmarkStore())
         .environmentObject(ReadingHistoryStore())
 }
+

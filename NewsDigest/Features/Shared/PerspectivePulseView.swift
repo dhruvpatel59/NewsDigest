@@ -7,7 +7,6 @@ struct PerspectivePulseView: View {
     
     var body: some View {
         VStack(alignment: .leading, spacing: 20) {
-            // Title & Tone Badge
             HStack {
                 Text("Pulse 360 Analysis")
                     .font(.headline.bold())
@@ -22,14 +21,12 @@ struct PerspectivePulseView: View {
                     .foregroundColor(.blue)
             }
             
-            // 2D Chart: Sentiment vs Bias
             VStack(alignment: .leading, spacing: 8) {
                 Text("Perspective Mapping")
                     .font(.caption)
                     .foregroundColor(.white.opacity(0.6))
                 
                 Chart {
-                    // Current Article Point
                     PointMark(
                         x: .value("Bias", analysis.biasScore),
                         y: .value("Sentiment", analysis.sentimentScore)
@@ -37,7 +34,6 @@ struct PerspectivePulseView: View {
                     .foregroundStyle(analysis.sentimentColor.gradient)
                     .symbolSize(300)
                     
-                    // Reference Axis - Center
                     RuleMark(x: .value("Middle", 0))
                         .lineStyle(StrokeStyle(lineWidth: 0.5, dash: [2]))
                         .foregroundStyle(.secondary.opacity(0.3))
@@ -79,7 +75,6 @@ struct PerspectivePulseView: View {
                 .cornerRadius(12)
             }
             
-            // The Other Side Section
             VStack(alignment: .leading, spacing: 8) {
                 HStack {
                     Image(systemName: "hand.raised.fill")
@@ -104,7 +99,6 @@ struct PerspectivePulseView: View {
                     )
             }
             
-            // Global Impact
             Label(analysis.globalImpact, systemImage: "globe.americas.fill")
                 .font(.caption)
                 .foregroundColor(.white.opacity(0.6))
@@ -119,3 +113,4 @@ struct PerspectivePulseView: View {
         .environment(\.colorScheme, .dark) // Forces the deep-dark minimalist aesthetic
     }
 }
+

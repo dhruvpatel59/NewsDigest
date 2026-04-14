@@ -1,7 +1,6 @@
 import Foundation
 
 struct Article: Identifiable, Codable, Hashable {
-    // We utilize the physical URL as a truly unique ID.
     var id: String { url }
     
     let title: String
@@ -32,7 +31,6 @@ struct Article: Identifiable, Codable, Hashable {
         self.image_url = try container.decodeIfPresent(String.self, forKey: .image_url)
         self.publishedAt = try container.decode(String.self, forKey: .publishedAt)
         
-        // Try decoding GNews nested source, otherwise fallback to flat property
         if let sourceContainer = try? container.nestedContainer(keyedBy: SourceKeys.self, forKey: .source) {
             self.newsSite = try sourceContainer.decode(String.self, forKey: .name)
         } else {
@@ -48,11 +46,9 @@ struct Article: Identifiable, Codable, Hashable {
         try container.encode(image_url, forKey: .image_url)
         try container.encode(publishedAt, forKey: .publishedAt)
         
-        // Always encode as flat 'source' for simpler local storage/RSS
         try container.encode(newsSite, forKey: .source)
     }
     
-    // Manual initializer for Previews and internal Bookmark usage
     init(title: String, summary: String, url: String, image_url: String?, publishedAt: String, newsSite: String) {
         self.title = title
         self.summary = summary
@@ -70,7 +66,6 @@ struct Article: Identifiable, Codable, Hashable {
         hasher.combine(id)
     }
     
-    // Global Time parsing
     var formattedPublishedTime: String {
         let formatter = ISO8601DateFormatter()
         formatter.formatOptions = [.withInternetDateTime]
@@ -85,3 +80,4 @@ struct Article: Identifiable, Codable, Hashable {
         return publishedAt
     }
 }
+

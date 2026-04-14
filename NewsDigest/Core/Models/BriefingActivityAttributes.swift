@@ -10,3 +10,4 @@ struct BriefingActivityAttributes: ActivityAttributes {
     var articleTitle: String
     var newsSource: String
 }
+

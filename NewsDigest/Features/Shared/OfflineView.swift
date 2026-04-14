@@ -6,7 +6,6 @@ struct OfflineView: View {
     
     var body: some View {
         VStack(spacing: 24) {
-            // Animated/Pulsing Icon
             ZStack {
                 Circle()
                     .fill(Color.accentColor.opacity(0.1))
@@ -67,3 +66,4 @@ struct OfflineView: View {
         OfflineView(onRetry: {})
     }
 }
+

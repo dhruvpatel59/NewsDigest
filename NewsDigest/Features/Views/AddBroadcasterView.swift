@@ -51,7 +51,6 @@ struct AddBroadcasterView: View {
     }
 }
 
-// MARK: - Subcomponents
 extension AddBroadcasterView {
     
     private var headerView: some View {
@@ -139,3 +138,4 @@ struct CustomTextField: View {
 #Preview {
     AddBroadcasterView(store: BroadcasterStore())
 }
+

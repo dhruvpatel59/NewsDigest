@@ -32,7 +32,6 @@ struct CategoryDetailView: View {
                             offlineWarningBar
                         }
                         
-                        // Category Header Banner
                         categoryBanner
                         
                         if store.isFetching && store.articles.isEmpty {
@@ -103,7 +102,6 @@ struct CategoryDetailView: View {
     }
 }
 
-// MARK: - Subcomponents
 extension CategoryDetailView {
     
     private var offlineWarningBar: some View {
@@ -161,3 +159,4 @@ extension CategoryDetailView {
         .padding(.vertical, 60)
     }
 }
+

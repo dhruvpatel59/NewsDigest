@@ -13,7 +13,6 @@ class AudioBriefingService: NSObject, ObservableObject, AVSpeechSynthesizerDeleg
     @Published var currentlyReadingArticleID: String? = nil
     @Published var selectedPersona: AudioPersona = AudioPersona.available[0]
     
-    // Live Activity Management
     private var currentActivity: Activity<BriefingActivityAttributes>?
     private var progressUpdateTimer: Timer?
     
@@ -35,7 +34,6 @@ class AudioBriefingService: NSObject, ObservableObject, AVSpeechSynthesizerDeleg
         let utteranceText = prepareText(article: article, summary: summary)
         let utterance = AVSpeechUtterance(string: utteranceText)
         
-        // Dynamic Voice Selection based on Persona
         let voices = AVSpeechSynthesisVoice.speechVoices()
         let voice = voices.first(where: { 
             $0.language == selectedPersona.languageCode && 
@@ -44,7 +42,6 @@ class AudioBriefingService: NSObject, ObservableObject, AVSpeechSynthesizerDeleg
            ?? AVSpeechSynthesisVoice(language: "en-US")
         
         utterance.voice = voice
-        // Slower speech rate for better comprehension during news briefings
         utterance.rate = selectedPersona.id == "daniel" ? 0.48 : 0.45
         utterance.pitchMultiplier = 0.95
         utterance.postUtteranceDelay = 0.5
@@ -54,7 +51,6 @@ class AudioBriefingService: NSObject, ObservableObject, AVSpeechSynthesizerDeleg
         
         HapticManager.shared.trigger(.soft)
         
-        // Start Live Activity
         startActivity(for: article, summary: summary)
         
         synthesizer.speak(utterance)
@@ -77,7 +73,6 @@ class AudioBriefingService: NSObject, ObservableObject, AVSpeechSynthesizerDeleg
         """
     }
     
-    // MARK: - Live Activity Logic
     
     private func startActivity(for article: Article, summary: String) {
         guard ActivityAuthorizationInfo().areActivitiesEnabled else { return }
@@ -87,7 +82,6 @@ class AudioBriefingService: NSObject, ObservableObject, AVSpeechSynthesizerDeleg
             newsSource: article.newsSite
         )
         
-        // Parse summary into bullet points for the UI
         let points = summary.components(separatedBy: "\n")
             .map { $0.trimmingCharacters(in: .init(charactersIn: "*•- ")) }
             .filter { !$0.isEmpty }
@@ -104,7 +98,6 @@ class AudioBriefingService: NSObject, ObservableObject, AVSpeechSynthesizerDeleg
                 pushType: nil
             )
             
-            // Start simulation timer for progress
             var currentProgress = 0.0
             progressUpdateTimer = Timer.scheduledTimer(withTimeInterval: 3.0, repeats: true) { [weak self] _ in
                 guard let self = self else { return }
@@ -134,7 +127,6 @@ class AudioBriefingService: NSObject, ObservableObject, AVSpeechSynthesizerDeleg
         }
     }
     
-    // MARK: - Delegate Actions
     
     func speechSynthesizer(_ synthesizer: AVSpeechSynthesizer, didFinish utterance: AVSpeechUtterance) {
         DispatchQueue.main.async {
@@ -150,3 +142,4 @@ class AudioBriefingService: NSObject, ObservableObject, AVSpeechSynthesizerDeleg
         }
     }
 }
+

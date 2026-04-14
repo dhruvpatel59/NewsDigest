@@ -20,7 +20,6 @@ struct DigestView: View {
     }
     @State private var articleToRead: Article?
     
-    // Manual Location Search
     @State private var showingLocationSearch = false
     @State private var locationSearchText = ""
     @FocusState private var isSearchFocused: Bool
@@ -33,7 +32,6 @@ struct DigestView: View {
                 if locationManager.authorizationStatus == .notDetermined && !hasRequestedData {
                     locationPermissionRequestView
                 } else if !networkMonitor.isConnected && store.articles.isEmpty {
-                    // Cold start with no internet and no articles loaded
                     OfflineView {
                         refreshNews()
                     }
@@ -41,7 +39,6 @@ struct DigestView: View {
                     ScrollView {
                         LazyVStack(spacing: 16) {
                             if !networkMonitor.isConnected && !store.articles.isEmpty {
-                                // Already have articles but connection is lost
                                 offlineWarningBar
                             }
                             
@@ -118,9 +115,7 @@ struct DigestView: View {
             }
             .sheet(item: $articleToSummarize) { article in
                 AISummarySheet(article: article) {
-                    // Dismiss the summary sheet
                     articleToSummarize = nil
-                    // Add slight delay so the sheet can start dismissing before full screen cover appears
                     DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
                         articleToRead = article
                     }
@@ -152,7 +147,6 @@ struct DigestView: View {
     }
 }
 
-// MARK: - Subcomponents
 extension DigestView {
     
     private var offlineWarningBar: some View {
@@ -268,3 +262,4 @@ extension DigestView {
         }
     }
 }
+

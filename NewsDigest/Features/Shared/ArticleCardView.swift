@@ -18,7 +18,6 @@ struct ArticleCardView: View {
                 
                 Spacer()
                 
-                // AI Summarize Button
                 if let onSummarize = onSummarize {
                     Button(action: {
                         onSummarize()
@@ -31,7 +30,6 @@ struct ArticleCardView: View {
                     .padding(.trailing, 8)
                 }
                 
-                // Native Bookmark Icon!
                 Button(action: {
                     bookmarkStore.toggleBookmark(for: article)
                 }) {
@@ -42,7 +40,6 @@ struct ArticleCardView: View {
                 .buttonStyle(.plain)
                 .padding(.trailing, 8)
                 
-                // Read Later Icon!
                 Button(action: {
                     HapticManager.shared.trigger(.medium)
                     if readLaterStore.isInReadLater(article) {
@@ -127,3 +124,4 @@ struct ArticleCardView: View {
         .padding()
     }
 }
+

@@ -16,13 +16,10 @@ class ReadingHistoryStore: ObservableObject {
     
     @MainActor
     func markAsRead(_ article: Article) {
-        // Remove if already exists (to move it to the top)
         history.removeAll(where: { $0.id == article.id })
         
-        // Insert at the top
         history.insert(article, at: 0)
         
-        // Trim to max
         if history.count > maxItems {
             history = Array(history.prefix(maxItems))
         }
@@ -44,3 +41,4 @@ class ReadingHistoryStore: ObservableObject {
         }
     }
 }
+

@@ -19,10 +19,8 @@ class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
         self.authorizationStatus = manager.authorizationStatus
         super.init()
         manager.delegate = self
-        // Kilometer accuracy saves massive amounts of battery and is plenty accurate for a country check
         manager.desiredAccuracy = kCLLocationAccuracyKilometer 
         
-        // Eagerly fetch if we already have permission!
         if authorizationStatus == .authorizedWhenInUse || authorizationStatus == .authorizedAlways {
             fetchLocation()
         }
@@ -58,7 +56,6 @@ class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
             if let placemark = placemarks?.first {
                 self.countryCode = placemark.isoCountryCode?.lowercased() ?? "us"
                 
-                // Hyper-Local data extraction
                 let city = placemark.locality ?? ""
                 let state = placemark.administrativeArea ?? ""
                 
@@ -80,3 +77,4 @@ class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
         self.countryCode = "us" 
     }
 }
+

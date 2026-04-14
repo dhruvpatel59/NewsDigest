@@ -8,16 +8,13 @@ class NewsSummaryCoordinator {
     
     func generateInsight(prompt: String) async throws -> String {
         do {
-            // Attempt with Primary (Gemini)
             return try await primaryProvider.generateInsight(prompt: prompt)
         } catch let primaryError {
-            // Check if we should failover
             let isFailoverEligible: Bool = {
                 if let sumError = primaryError as? SummaryProviderError {
                     return sumError.is429
                 }
                 let nsError = primaryError as NSError
-                // Timeout or network connection lost
                 if nsError.domain == NSURLErrorDomain && [NSURLErrorTimedOut, NSURLErrorNetworkConnectionLost].contains(nsError.code) {
                     return true
                 }
@@ -38,3 +35,4 @@ class NewsSummaryCoordinator {
         }
     }
 }
+

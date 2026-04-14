@@ -1,7 +1,6 @@
 import Foundation
 import Combine
 
-// MARK: - AI Insight Model
 struct AIInsightEntry: Codable, Identifiable, Equatable {
     let id: UUID
     let article: Article
@@ -9,13 +8,11 @@ struct AIInsightEntry: Codable, Identifiable, Equatable {
     let analysis: Pulse360Analysis? // Persistent analytical data
     let generatedAt: Date
     
-    // For easy deduplication
     var normalizedURL: String {
         article.url.components(separatedBy: "?").first ?? article.url
     }
 }
 
-// MARK: - AI Insight Store
 class AIInsightStore: ObservableObject {
     static let shared = AIInsightStore()
     
@@ -33,17 +30,14 @@ class AIInsightStore: ObservableObject {
         }
     }
     
-    // MARK: - API
     
     func saveInsight(article: Article, analysis: Pulse360Analysis) {
         let cleanURL = article.url.components(separatedBy: "?").first ?? article.url
         
-        // Prevent duplicates
         if let index = entries.firstIndex(where: { $0.normalizedURL == cleanURL }) {
             entries.remove(at: index)
         }
         
-        // Convert analysis points back to legacy summary string for compatibility
         let summaryString = analysis.summaryPoints.map { "• \($0)" }.joined(separator: "\n")
         
         let newEntry = AIInsightEntry(
@@ -66,7 +60,6 @@ class AIInsightStore: ObservableObject {
         return entries.first(where: { $0.normalizedURL == cleanURL })?.analysis
     }
     
-    // MARK: - Persistence
     
     private func save() {
         let copy = entries
@@ -82,3 +75,4 @@ class AIInsightStore: ObservableObject {
         }
     }
 }
+

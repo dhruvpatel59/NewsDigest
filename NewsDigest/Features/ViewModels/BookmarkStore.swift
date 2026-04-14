@@ -44,3 +44,4 @@ class BookmarkStore: ObservableObject {
         }
     }
 }
+

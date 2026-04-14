@@ -1,8 +1,5 @@
 internal import SwiftUI
 
-// MARK: - Shareable Article Card
-// A standalone card designed for image export. Does NOT depend on
-// EnvironmentObjects so ImageRenderer can render it cleanly.
 
 struct ShareableArticleCard: View {
     let article: Article
@@ -11,7 +8,6 @@ struct ShareableArticleCard: View {
     
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
-            // Header: Dynamic Branding
             HStack {
                 HStack(spacing: 6) {
                     Image(systemName: "sparkles")
@@ -30,7 +26,6 @@ struct ShareableArticleCard: View {
             .padding(.top, 24)
             .padding(.bottom, 16)
 
-            // Article Image (Banner)
             if let urlString = article.image_url, let url = URL(string: urlString) {
                 AsyncImage(url: url) { phase in
                     if let image = phase.image {
@@ -43,7 +38,6 @@ struct ShareableArticleCard: View {
                 .clipped()
             }
             
-            // Content
             VStack(alignment: .leading, spacing: 20) {
                 Text(article.title)
                     .font(.system(size: 22, weight: .bold, design: .serif))
@@ -51,7 +45,6 @@ struct ShareableArticleCard: View {
                     .lineLimit(2)
                 
                 if let summary = aiSummary {
-                    // Styled Insight Section
                     VStack(alignment: .leading, spacing: 14) {
                         let lines = summary.components(separatedBy: "\n").prefix(3)
                         ForEach(Array(lines.enumerated()), id: \.offset) { _, line in
@@ -69,17 +62,13 @@ struct ShareableArticleCard: View {
                     .cornerRadius(12)
                 }
                 
-                // Add the Pulse Chart if available
                 if let analysis = analysis {
                     PerspectivePulseView(analysis: analysis)
-                        // Override background scheme explicitly for the export card to ensure
-                        // it maintains extreme contrast against the black export background
                         .environment(\.colorScheme, .dark) 
                 }
             }
             .padding(24)
             
-            // Branding Footer
             HStack {
                 Text("Downloaded on Pulse News")
                     .font(.system(size: 10, weight: .medium))
@@ -98,25 +87,21 @@ struct ShareableArticleCard: View {
     }
 }
 
-// MARK: - Image Sharing Utility
 struct ArticleImageSharer {
     
     @MainActor
     static func share(_ article: Article, aiSummary: String? = nil, analysis: Pulse360Analysis? = nil) {
         print("--- Pulse AI: Preparing Social Insight Card ---") // Debug log
         
-        // 1. Prepare the Renderer
         let shareView = ShareableArticleCard(article: article, aiSummary: aiSummary, analysis: analysis)
         let renderer = ImageRenderer(content: shareView)
         renderer.scale = 3.0
         
-        // 2. Safely capture the image
         guard let image = renderer.uiImage else {
             print("--- Pulse AI Error: Image rendering failed ---")
             return
         }
         
-        // 3. Find the presentation context more reliably
         let scenes = UIApplication.shared.connectedScenes
         let windowScene = scenes.first { $0.activationState == .foregroundActive } as? UIWindowScene
         let window = windowScene?.windows.first { $0.isKeyWindow }
@@ -126,16 +111,13 @@ struct ArticleImageSharer {
             return
         }
         
-        // Find the top-most presented controller (if a sheet is already open)
         var topVC = rootVC
         while let presented = topVC.presentedViewController {
             topVC = presented
         }
         
-        // 4. Present the Share Sheet
         let activityVC = UIActivityViewController(activityItems: [image], applicationActivities: nil)
         
-        // iPad Support
         if let popover = activityVC.popoverPresentationController {
             popover.sourceView = topVC.view
             popover.sourceRect = CGRect(x: UIScreen.main.bounds.width / 2, y: UIScreen.main.bounds.height / 2, width: 0, height: 0)
@@ -145,3 +127,4 @@ struct ArticleImageSharer {
         topVC.present(activityVC, animated: true)
     }
 }
+

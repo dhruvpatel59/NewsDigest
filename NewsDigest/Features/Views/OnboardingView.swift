@@ -26,11 +26,9 @@ struct OnboardingView: View {
     
     var body: some View {
         ZStack {
-            // Unified dark background
             Color.black.ignoresSafeArea()
             
             VStack(spacing: 0) {
-                // Page content
                 TabView(selection: $currentPage) {
                     ForEach(0..<pages.count, id: \.self) { index in
                         onboardingPage(for: index)
@@ -40,9 +38,7 @@ struct OnboardingView: View {
                 .tabViewStyle(.page(indexDisplayMode: .never))
                 .animation(.easeInOut(duration: 0.3), value: currentPage)
                 
-                // Bottom controls
                 VStack(spacing: 24) {
-                    // Custom page indicator
                     HStack(spacing: 8) {
                         ForEach(0..<pages.count, id: \.self) { index in
                             Capsule()
@@ -52,7 +48,6 @@ struct OnboardingView: View {
                         }
                     }
                     
-                    // Action button
                     Button {
                         impactMed.impactOccurred()
                         if currentPage < pages.count - 1 {
@@ -72,7 +67,6 @@ struct OnboardingView: View {
                     }
                     .padding(.horizontal, 24)
                     
-                    // Skip option (hidden on last page)
                     if currentPage < pages.count - 1 {
                         Button {
                             impactMed.impactOccurred()
@@ -83,7 +77,6 @@ struct OnboardingView: View {
                                 .foregroundColor(.white.opacity(0.6))
                         }
                     } else {
-                        // Maintain spacing
                         Text(" ")
                             .font(.subheadline)
                     }
@@ -99,7 +92,6 @@ struct OnboardingView: View {
         return VStack(spacing: 32) {
             Spacer()
             
-            // Icon with subtle glow
             ZStack {
                 Circle()
                     .fill(Color.accentColor.opacity(0.15))
@@ -137,3 +129,4 @@ struct OnboardingView: View {
 #Preview {
     OnboardingView()
 }
+

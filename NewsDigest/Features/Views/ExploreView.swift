@@ -75,7 +75,6 @@ struct ExploreView: View {
     }
 }
 
-// MARK: - Subcomponents
 extension ExploreView {
     
     private var offlineWarningBar: some View {
@@ -164,7 +163,6 @@ extension ExploreView {
     }
 }
 
-// MARK: - Refined Category Card (Apple-inspired)
 struct CategoryCardView: View {
     let category: NewsCategory
     
@@ -205,3 +203,4 @@ struct CategoryCardView: View {
     ExploreView()
         .environmentObject(BookmarkStore())
 }
+

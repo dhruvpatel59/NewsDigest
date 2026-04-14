@@ -66,7 +66,6 @@ class BroadcasterStore: ObservableObject {
         isFetching = false
     }
     
-    // MARK: - Custom Feed Management
     
     func validateAndAdd(url: String, name: String) async -> Bool {
         guard customBroadcasters.count < maxCustomFeeds else { return false }
@@ -115,3 +114,4 @@ class BroadcasterStore: ObservableObject {
         }
     }
 }
+

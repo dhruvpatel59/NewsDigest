@@ -8,3 +8,4 @@ struct NewsWidget_swiftBundle: WidgetBundle {
         NewsWidget_swiftLiveActivity()
     }
 }
+

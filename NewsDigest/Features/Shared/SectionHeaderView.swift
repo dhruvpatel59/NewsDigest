@@ -1,6 +1,5 @@
 internal import SwiftUI
 
-// MARK: - Styled Section Header
 struct SectionHeaderView: View {
     let title: String
     let icon: String
@@ -18,7 +17,6 @@ struct SectionHeaderView: View {
                 .fontWeight(.bold)
                 .foregroundColor(.primary)
             
-            // Subtle line extending to the right
             Rectangle()
                 .fill(Color.accentColor.opacity(0.15))
                 .frame(height: 1)
@@ -42,3 +40,4 @@ struct SectionHeaderView: View {
         .padding(.vertical, 4)
     }
 }
+

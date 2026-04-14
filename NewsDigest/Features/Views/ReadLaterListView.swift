@@ -72,7 +72,6 @@ struct ReadLaterListView: View {
     }
 }
 
-// MARK: - Subcomponents
 extension ReadLaterListView {
     
     private var filterHeader: some View {
@@ -170,3 +169,4 @@ struct ReadLaterCard: View {
             .environmentObject(BookmarkStore())
     }
 }
+

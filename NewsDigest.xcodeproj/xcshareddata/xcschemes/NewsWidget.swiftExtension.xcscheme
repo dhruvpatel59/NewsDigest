@@ -17,8 +17,8 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "3486C0952F80041400A0EBD2"
-               BuildableName = "NewsWidget.swiftExtension.appex"
-               BlueprintName = "NewsWidget.swiftExtension"
+               BuildableName = "NewsWidgetExtension.appex"
+               BlueprintName = "NewsWidgetExtension"
                ReferencedContainer = "container:NewsDigest.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>

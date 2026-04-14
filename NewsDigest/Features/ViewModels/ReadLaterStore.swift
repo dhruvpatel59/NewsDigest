@@ -27,10 +27,8 @@ class ReadLaterStore: ObservableObject {
     }
     
     func addToReadLater(_ article: Article) -> Bool {
-        // Prevent duplicates
         if isInReadLater(article) { return false }
         
-        // Enforce 50-article cap
         guard savedArticles.count < maxArticlesCount else { return false }
         
         let newEntry = ReadLaterArticle(article: article)
@@ -66,7 +64,6 @@ class ReadLaterStore: ObservableObject {
         }
     }
     
-    // MARK: - Internal Engine
     
     /// Auto-removes articles that have been marked "Read" for more than 7 days.
     private func performAutoPurge() {
@@ -99,3 +96,4 @@ class ReadLaterStore: ObservableObject {
         }
     }
 }
+

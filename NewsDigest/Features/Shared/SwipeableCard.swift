@@ -1,8 +1,5 @@
 internal import SwiftUI
 
-// MARK: - Direct Swipe Action Modifier
-// No visible buttons. Swipe left → bookmark. Swipe right → share.
-// Shows a brief icon overlay as feedback, then snaps back.
 
 struct SwipeableCardModifier: ViewModifier {
     let onBookmark: () -> Void
@@ -38,7 +35,6 @@ struct SwipeableCardModifier: ViewModifier {
                         guard horizontal > vertical else { return }
                         
                         let drag = value.translation.width
-                        // Smoother rubber-banding
                         let resistance: CGFloat = abs(drag) > threshold ? 0.4 : 1.0
                         offset = drag * resistance
                     }
@@ -48,12 +44,10 @@ struct SwipeableCardModifier: ViewModifier {
                         
                         if horizontal > vertical {
                             if value.translation.width > threshold {
-                                // RIGHT SWIPE -> BOOKMARK (Per instruction)
                                 impactLight.impactOccurred()
                                 triggerFeedback(icon: isBookmarked ? "heart.slash.fill" : "heart.fill")
                                 onBookmark()
                             } else if value.translation.width < -threshold {
-                                // LEFT SWIPE -> SHARE (Per instruction)
                                 impactLight.impactOccurred()
                                 triggerFeedback(icon: "square.and.arrow.up")
                                 onShare()
@@ -71,7 +65,6 @@ struct SwipeableCardModifier: ViewModifier {
         withAnimation(.spring(response: 0.25)) {
             feedbackIcon = icon
         }
-        // Auto-dismiss after brief display
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.8) {
             withAnimation(.easeOut(duration: 0.2)) {
                 feedbackIcon = nil
@@ -94,7 +87,6 @@ extension View {
     }
 }
 
-// MARK: - One-Time Swipe Tip Card
 struct SwipeTipCard: View {
     @AppStorage("hasSeenSwipeTip") private var hasSeenSwipeTip = false
     
@@ -136,3 +128,4 @@ struct SwipeTipCard: View {
         }
     }
 }
+

@@ -1,6 +1,5 @@
 internal import SwiftUI
 
-// MARK: - Shimmer Loading Skeleton
 struct ShimmerModifier: ViewModifier {
     @State private var phase: CGFloat = 0
     
@@ -66,3 +65,4 @@ struct SkeletonCardView: View {
         .shimmer()
     }
 }
+

@@ -58,7 +58,6 @@ struct InsightLibraryRow: View {
     
     var body: some View {
         VStack(alignment: .leading, spacing: 12) {
-            // Header: Source + Date
             HStack {
                 Text(entry.article.newsSite.uppercased())
                     .font(.system(size: 10, weight: .black))
@@ -84,7 +83,6 @@ struct InsightLibraryRow: View {
                     .transition(.opacity)
             }
             
-            // Actions
             HStack(spacing: 16) {
                 Button {
                     withAnimation { showFullContent.toggle() }
@@ -95,7 +93,6 @@ struct InsightLibraryRow: View {
                 
                 Spacer()
                 
-                // PERSONA SELECTOR
                 Menu {
                     ForEach(AudioPersona.available) { persona in
                         Button {
@@ -117,7 +114,6 @@ struct InsightLibraryRow: View {
                         .foregroundColor(.blue)
                 }
                 
-                // AUDIO BUTTON
                 Button {
                     audioService.speak(article: entry.article, summary: entry.summary)
                 } label: {
@@ -141,7 +137,6 @@ struct InsightLibraryRow: View {
                 
                 Button(role: .destructive) {
                     withAnimation {
-                        // If we are currently reading this specific insight, stop the audio
                         if audioService.currentlyReadingArticleID == entry.article.id {
                             audioService.stop()
                         }
@@ -166,3 +161,4 @@ struct InsightLibraryRow: View {
         )
     }
 }
+

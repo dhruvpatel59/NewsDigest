@@ -17,7 +17,6 @@ struct ProfileView: View {
         }
     }
     
-    // Extract initials from the user's name
     private var userInitials: String {
         let name = authStore.currentUser?.name ?? "G"
         let parts = name.components(separatedBy: " ")
@@ -57,7 +56,6 @@ struct ProfileView: View {
     }
 }
 
-// MARK: - Subcomponents
 extension ProfileView {
     
     private var profileHeader: some View {
@@ -112,7 +110,6 @@ extension ProfileView {
                 statDashItem(value: "\(readLaterStore.unreadCount)", label: "Unread", icon: "clock.fill", color: .accentColor)
             }
             
-            // NEW: AI Insight Library Entry
             NavigationLink {
                 AIInsightsListView()
             } label: {
@@ -364,3 +361,4 @@ struct MiniArticleCard: View {
         .glassPanel()
     }
 }
+

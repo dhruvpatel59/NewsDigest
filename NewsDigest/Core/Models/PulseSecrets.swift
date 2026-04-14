@@ -12,18 +12,16 @@ struct PulseSecrets {
         return dict
     }()
     
-    // API Keys
     static var gnewsKey: String { secrets["GNEWS_API_KEY"] ?? "" }
     static var geminiKey: String { secrets["GEMINI_API_KEY"] ?? "" }
     static var groqKey: String { secrets["GROQ_API_KEY"] ?? "" }
     
-    // Auth Configuration
     static var adminEmail: String { secrets["ADMIN_EMAIL"] ?? "guest@pulsenews.ai" }
     static var adminDefaultPassword: String { secrets["ADMIN_DEFAULT_PASSWORD"] ?? UUID().uuidString }
     static var authSalt: String { secrets["AUTH_SALT"] ?? "fallback_pulse_salt_2026" }
     
-    // Verification
     static var hasValidKeys: Bool {
         !gnewsKey.isEmpty && !geminiKey.isEmpty
     }
 }
+

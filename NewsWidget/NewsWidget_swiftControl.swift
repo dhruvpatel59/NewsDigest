@@ -1,10 +1,3 @@
-//
-//  NewsWidget_swiftControl.swift
-//  NewsWidget.swift
-//
-//  Created by Dhruv Patel on 03/04/26.
-//
-
 import AppIntents
 import SwiftUI
 import WidgetKit
@@ -71,7 +64,7 @@ struct StartTimerIntent: SetValueIntent {
     }
 
     func perform() async throws -> some IntentResult {
-        // Start the timer…
         return .result()
     }
 }
+

@@ -1,11 +1,3 @@
-//
-//  NewsWidget_swiftLiveActivity.swift
-//  NewsWidget.swift
-//
-//  Created by Dhruv Patel on 03/04/26.
-//
-
-
 import ActivityKit
 import WidgetKit
 import SwiftUI
@@ -23,7 +15,6 @@ struct BriefingActivityAttributes: ActivityAttributes {
 struct NewsWidget_swiftLiveActivity: Widget {
     var body: some WidgetConfiguration {
         ActivityConfiguration(for: BriefingActivityAttributes.self) { context in
-            // Lock screen/banner UI
             VStack(alignment: .leading, spacing: 12) {
                 HStack {
                     Image(systemName: "sparkles")
@@ -113,3 +104,4 @@ struct NewsWidget_swiftLiveActivity: Widget {
         }
     }
 }
+

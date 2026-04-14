@@ -27,3 +27,4 @@ struct NewsDigestApp: App {
         }
     }
 }
+

@@ -175,3 +175,4 @@ struct GuidanceCard: View {
 #Preview {
     AppGuidanceView()
 }
+

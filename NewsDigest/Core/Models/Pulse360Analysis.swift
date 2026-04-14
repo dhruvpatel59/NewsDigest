@@ -9,7 +9,6 @@ struct Pulse360Analysis: Codable, Hashable {
     let theOtherSide: String   // A concise counter-perspective
     let globalImpact: String   // 1-sentence on why this matters globally
     
-    // UI Helpers
     var sentimentColor: Color {
         if sentimentScore > 0.3 { return .green }
         if sentimentScore < -0.3 { return .red }
@@ -22,3 +21,4 @@ struct Pulse360Analysis: Codable, Hashable {
         return "Balanced Viewpoint"
     }
 }
+

@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		3486C0992F80041600A0EBD2 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3486C0982F80041500A0EBD2 /* WidgetKit.framework */; };
 		3486C09B2F80041600A0EBD2 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3486C09A2F80041600A0EBD2 /* SwiftUI.framework */; };
-		3486C0AC2F80041900A0EBD2 /* NewsWidget.swiftExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 3486C0962F80041400A0EBD2 /* NewsWidget.swiftExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		3486C0AC2F80041900A0EBD2 /* NewsWidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 3486C0962F80041400A0EBD2 /* NewsWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -18,7 +18,7 @@
 			containerPortal = 34A978F52F61AD7A007F80A9 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 3486C0952F80041400A0EBD2;
-			remoteInfo = NewsWidget.swiftExtension;
+			remoteInfo = NewsWidgetExtension;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -29,7 +29,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
-				3486C0AC2F80041900A0EBD2 /* NewsWidget.swiftExtension.appex in Embed Foundation Extensions */,
+				3486C0AC2F80041900A0EBD2 /* NewsWidgetExtension.appex in Embed Foundation Extensions */,
 			);
 			name = "Embed Foundation Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -37,29 +37,29 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		3486C0962F80041400A0EBD2 /* NewsWidget.swiftExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = NewsWidget.swiftExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		3486C0962F80041400A0EBD2 /* NewsWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = NewsWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		3486C0982F80041500A0EBD2 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
 		3486C09A2F80041600A0EBD2 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
 		34A978FD2F61AD7A007F80A9 /* NewsDigest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NewsDigest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
-		3486C0AD2F80041900A0EBD2 /* Exceptions for "NewsWidget.swift" folder in "NewsWidget.swiftExtension" target */ = {
+		3486C0AD2F80041900A0EBD2 /* Exceptions for "NewsWidget" folder in "NewsWidgetExtension" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
 				Info.plist,
 			);
-			target = 3486C0952F80041400A0EBD2 /* NewsWidget.swiftExtension */;
+			target = 3486C0952F80041400A0EBD2 /* NewsWidgetExtension */;
 		};
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
-		3486C09C2F80041600A0EBD2 /* NewsWidget.swift */ = {
+		3486C09C2F80041600A0EBD2 /* NewsWidget */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			exceptions = (
-				3486C0AD2F80041900A0EBD2 /* Exceptions for "NewsWidget.swift" folder in "NewsWidget.swiftExtension" target */,
+				3486C0AD2F80041900A0EBD2 /* Exceptions for "NewsWidget" folder in "NewsWidgetExtension" target */,
 			);
-			path = NewsWidget.swift;
+			path = NewsWidget;
 			sourceTree = "<group>";
 		};
 		34A978FF2F61AD7A007F80A9 /* NewsDigest */ = {
@@ -102,7 +102,7 @@
 			isa = PBXGroup;
 			children = (
 				34A978FF2F61AD7A007F80A9 /* NewsDigest */,
-				3486C09C2F80041600A0EBD2 /* NewsWidget.swift */,
+				3486C09C2F80041600A0EBD2 /* NewsWidget */,
 				3486C0972F80041500A0EBD2 /* Frameworks */,
 				34A978FE2F61AD7A007F80A9 /* Products */,
 			);
@@ -112,7 +112,7 @@
 			isa = PBXGroup;
 			children = (
 				34A978FD2F61AD7A007F80A9 /* NewsDigest.app */,
-				3486C0962F80041400A0EBD2 /* NewsWidget.swiftExtension.appex */,
+				3486C0962F80041400A0EBD2 /* NewsWidgetExtension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -120,9 +120,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		3486C0952F80041400A0EBD2 /* NewsWidget.swiftExtension */ = {
+		3486C0952F80041400A0EBD2 /* NewsWidgetExtension */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 3486C0AE2F80041900A0EBD2 /* Build configuration list for PBXNativeTarget "NewsWidget.swiftExtension" */;
+			buildConfigurationList = 3486C0AE2F80041900A0EBD2 /* Build configuration list for PBXNativeTarget "NewsWidgetExtension" */;
 			buildPhases = (
 				3486C0922F80041400A0EBD2 /* Sources */,
 				3486C0932F80041400A0EBD2 /* Frameworks */,
@@ -133,13 +133,13 @@
 			dependencies = (
 			);
 			fileSystemSynchronizedGroups = (
-				3486C09C2F80041600A0EBD2 /* NewsWidget.swift */,
+				3486C09C2F80041600A0EBD2 /* NewsWidget */,
 			);
-			name = NewsWidget.swiftExtension;
+			name = NewsWidgetExtension;
 			packageProductDependencies = (
 			);
-			productName = NewsWidget.swiftExtension;
-			productReference = 3486C0962F80041400A0EBD2 /* NewsWidget.swiftExtension.appex */;
+			productName = NewsWidgetExtension;
+			productReference = 3486C0962F80041400A0EBD2 /* NewsWidgetExtension.appex */;
 			productType = "com.apple.product-type.app-extension";
 		};
 		34A978FC2F61AD7A007F80A9 /* NewsDigest */ = {
@@ -199,7 +199,7 @@
 			projectRoot = "";
 			targets = (
 				34A978FC2F61AD7A007F80A9 /* NewsDigest */,
-				3486C0952F80041400A0EBD2 /* NewsWidget.swiftExtension */,
+				3486C0952F80041400A0EBD2 /* NewsWidgetExtension */,
 			);
 		};
 /* End PBXProject section */
@@ -241,7 +241,7 @@
 /* Begin PBXTargetDependency section */
 		3486C0AB2F80041900A0EBD2 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 3486C0952F80041400A0EBD2 /* NewsWidget.swiftExtension */;
+			target = 3486C0952F80041400A0EBD2 /* NewsWidgetExtension */;
 			targetProxy = 3486C0AA2F80041900A0EBD2 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -256,8 +256,8 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 9DJ33K95UF;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = NewsWidget.swift/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = NewsWidget.swift;
+				INFOPLIST_FILE = NewsWidget/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = NewsWidget;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -286,8 +286,8 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 9DJ33K95UF;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = NewsWidget.swift/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = NewsWidget.swift;
+				INFOPLIST_FILE = NewsWidget/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = NewsWidget;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -499,7 +499,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		3486C0AE2F80041900A0EBD2 /* Build configuration list for PBXNativeTarget "NewsWidget.swiftExtension" */ = {
+		3486C0AE2F80041900A0EBD2 /* Build configuration list for PBXNativeTarget "NewsWidgetExtension" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				3486C0AF2F80041900A0EBD2 /* Debug */,

@@ -4,7 +4,6 @@ class RSSParserService: NSObject, XMLParserDelegate {
     private var articles: [Article] = []
     private var sourceName: String = ""
     
-    // Parser State
     private var currentElement = ""
     private var currentTitle = ""
     private var currentLink = ""
@@ -16,7 +15,6 @@ class RSSParserService: NSObject, XMLParserDelegate {
     private let rfc822Formatter: DateFormatter = {
         let df = DateFormatter()
         df.locale = Locale(identifier: "en_US_POSIX")
-        // Standard RSS pubDate formats
         df.dateFormat = "E, d MMM yyyy HH:mm:ss Z"
         return df
     }()
@@ -32,13 +30,11 @@ class RSSParserService: NSObject, XMLParserDelegate {
         return articles
     }
     
-    // MARK: - XMLParserDelegate
     
     func parser(_ parser: XMLParser, didStartElement elementName: String, namespaceURI: String?, qualifiedName qName: String?, attributes attributeDict: [String : String] = [:]) {
         currentElement = elementName
         
         if currentElement == "item" || currentElement == "entry" {
-            // Reset for new item
             currentTitle = ""
             currentLink = ""
             currentDescription = ""
@@ -46,7 +42,6 @@ class RSSParserService: NSObject, XMLParserDelegate {
             currentImageURL = nil
         }
         
-        // Extract images from enclosure tags or Atom links
         if elementName == "enclosure", let url = attributeDict["url"] {
             currentImageURL = url
         } else if elementName == "link", let rel = attributeDict["rel"], rel == "enclosure", let href = attributeDict["href"] {
@@ -71,7 +66,6 @@ class RSSParserService: NSObject, XMLParserDelegate {
     
     func parser(_ parser: XMLParser, didEndElement elementName: String, namespaceURI: String?, qualifiedName qName: String?) {
         if elementName == "item" || elementName == "entry" {
-            // Normalize Date
             let isoDate = normalizeDate(currentPubDate)
             
             let article = Article(
@@ -87,17 +81,15 @@ class RSSParserService: NSObject, XMLParserDelegate {
     }
     
     private func normalizeDate(_ dateString: String) -> String {
-        // Attempt RSS format (RFC 822) 
         if let date = rfc822Formatter.date(from: dateString) {
             return isoFormatter.string(from: date)
         }
         
-        // Attempt Atom default (ISO 8601)
         if let date = isoFormatter.date(from: dateString) {
             return isoFormatter.string(from: date)
         }
         
-        // Return original if parsing fails (fallback to raw string)
         return dateString
     }
 }
+

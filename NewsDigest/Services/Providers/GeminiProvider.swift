@@ -1,6 +1,5 @@
 import Foundation
 
-// MARK: - Gemini API Request/Response Models
 
 struct GeminiRequest: Encodable {
     let contents: [GeminiContent]
@@ -47,7 +46,6 @@ struct GeminiPartResponse: Decodable {
 class GeminiProvider: SummaryProvider {
     private var apiKey: String { AppConfig.geminiAPIKey }
     
-    // Priority: Lite models (Higher RPM) -> Newest Flash -> Pro Fallback
     private let models = [
         "gemini-2.0-flash-lite",
         "gemini-flash-latest",
@@ -130,3 +128,4 @@ class GeminiProvider: SummaryProvider {
         }
     }
 }
+

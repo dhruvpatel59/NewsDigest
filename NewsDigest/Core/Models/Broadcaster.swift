@@ -7,7 +7,6 @@ struct Broadcaster: Identifiable, Codable, Hashable {
     let iconName: String // SF Symbol name
     let isCustom: Bool
     
-    // Pre-configured list of popular broadcasters
     static let defaults: [Broadcaster] = [
         Broadcaster(
             name: "BBC News",
@@ -35,3 +34,4 @@ struct Broadcaster: Identifiable, Codable, Hashable {
         )
     ]
 }
+

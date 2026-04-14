@@ -1,6 +1,5 @@
 import Foundation
 
-// MARK: - Groq Request/Response Models
 struct GroqRequest: Encodable {
     let model: String
     let messages: [GroqMessage]
@@ -21,7 +20,6 @@ struct GroqResponse: Decodable {
     let choices: [Choice]
 }
 
-// MARK: - Provider
 class GroqProvider: SummaryProvider {
     private var apiKey: String { AppConfig.groqAPIKey }
     private let endpoint = "https://api.groq.com/openai/v1/chat/completions"
@@ -74,3 +72,4 @@ class GroqProvider: SummaryProvider {
         }
     }
 }
+

@@ -1,7 +1,6 @@
 import WidgetKit
 import SwiftUI
 
-// 1. The Timeline Provider fetches our Spaceflight API in the background!
 struct Provider: TimelineProvider {
     func placeholder(in context: Context) -> SimpleEntry {
         SimpleEntry(date: Date(), title: "SpaceX launches new rocket", summary: "A new paradigm in space exploration begins today.")
@@ -24,7 +23,6 @@ struct Provider: TimelineProvider {
             }
             
             let entry = SimpleEntry(date: Date(), title: topArticle.title, summary: topArticle.summary)
-            // Refresh widget every 30 minutes!
             let nextUpdate = Calendar.current.date(byAdding: .minute, value: 30, to: Date())!
             completion(Timeline(entries: [entry], policy: .after(nextUpdate)))
         }
@@ -32,14 +30,12 @@ struct Provider: TimelineProvider {
     }
 }
 
-// 2. We define the properties local to the Widget
 struct SimpleEntry: TimelineEntry {
     let date: Date
     let title: String
     let summary: String
 }
 
-// 3. We design our sleek Glassmorphism Widget UI
 struct NewsWidget_swiftEntryView : View {
     var entry: Provider.Entry
 
@@ -77,7 +73,6 @@ struct NewsWidget_swiftEntryView : View {
     }
 }
 
-// 4. Register the Widget with iOS
 struct NewsWidget_swift: Widget {
     let kind: String = "NewsWidget_swift"
 
@@ -92,7 +87,6 @@ struct NewsWidget_swift: Widget {
     }
 }
 
-// Helper Model for Background Decoding
 struct SpaceflightResponseWidget: Decodable {
     let results: [ArticleRef]
 }
@@ -106,3 +100,4 @@ struct ArticleRef: Decodable {
 } timeline: {
     SimpleEntry(date: .now, title: "Preview Article", summary: "This is what the widget looks like.")
 }
+

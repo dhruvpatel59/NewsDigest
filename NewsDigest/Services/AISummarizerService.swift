@@ -2,7 +2,6 @@ import Foundation
 import Combine
 internal import CoreLocation
 
-// MARK: - Service
 
 class AISummarizerService: ObservableObject {
     static let shared = AISummarizerService()
@@ -27,7 +26,6 @@ class AISummarizerService: ObservableObject {
         }
     }
     
-    // MARK: - Public Interface
     
     @MainActor
     func summarize(article: Article) async throws -> String {
@@ -37,20 +35,16 @@ class AISummarizerService: ObservableObject {
     
     @MainActor
     func generateFullInsight(article: Article) async throws -> Pulse360Analysis {
-        // 1. HARD PERSISTENCE CACHE
         if let cachedAnalysis = AIInsightStore.shared.getAnalysis(for: article.url) {
             print("--- Pulse AI Insight: Using persistent cache for \(article.title) ---")
             return cachedAnalysis
         }
         
-        // HYPER-LOCAL CONTEXT PREPARATION
         var localContext = ""
         let location = LocationManager.shared.overriddenLocation ?? LocationManager.shared.localArea ?? "their local area"
         
-        // Simulating the industry retrieval (can be connected to AuthStore/User later)
         let simulatedIndustry = "Technology and Finance" 
         
-        // We provide context if we have a location (manual OR automatic)
         if LocationManager.shared.overriddenLocation != nil || 
            LocationManager.shared.authorizationStatus == .authorizedWhenInUse || 
            LocationManager.shared.authorizationStatus == .authorizedAlways {
@@ -102,8 +96,8 @@ class AISummarizerService: ObservableObject {
             return analysis
         } catch {
             print("--- Pulse AI Insight: All engines failed or formatting error. Error: \(error.localizedDescription) ---")
-            // Throw generic error if network failed for all
             throw SummarizerError.networkError(error.localizedDescription)
         }
     }
 }
+

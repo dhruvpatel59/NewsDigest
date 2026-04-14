@@ -35,3 +35,4 @@ extension View {
         self.modifier(GlassPanelModifier(cornerRadius: cornerRadius))
     }
 }
+

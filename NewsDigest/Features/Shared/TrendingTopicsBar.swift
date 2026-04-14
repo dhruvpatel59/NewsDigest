@@ -1,8 +1,5 @@
 internal import SwiftUI
 
-// MARK: - Trending Topics Bar
-// Horizontal scrolling pill chips. Tapping a topic fetches articles for it.
-// "All" resets to the default country-based feed.
 
 struct TrendingTopicsBar: View {
     @Binding var selectedTopic: String?
@@ -10,7 +7,6 @@ struct TrendingTopicsBar: View {
     
     private let impactLight = UIImpactFeedbackGenerator(style: .light)
     
-    // Curated trending keywords — lightweight, no API needed
     private let topics = [
         "AI", "Elections", "Climate", "Space",
         "Markets", "Crypto", "Health", "Movies"
@@ -19,7 +15,6 @@ struct TrendingTopicsBar: View {
     var body: some View {
         ScrollView(.horizontal, showsIndicators: false) {
             HStack(spacing: 10) {
-                // "All" chip — resets to default feed
                 chipButton(label: "All", isSelected: selectedTopic == nil) {
                     selectedTopic = nil
                     onSelect(nil)
@@ -53,3 +48,4 @@ struct TrendingTopicsBar: View {
         .buttonStyle(.plain)
     }
 }
+

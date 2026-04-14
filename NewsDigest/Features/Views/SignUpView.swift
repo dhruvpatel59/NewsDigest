@@ -32,7 +32,6 @@ struct SignUpView: View {
     }
 }
 
-// MARK: - Subcomponents
 extension SignUpView {
     
     private var headerView: some View {
@@ -54,7 +53,6 @@ extension SignUpView {
     
     private var authForm: some View {
         VStack(spacing: 0) {
-            // Name field
             HStack(spacing: 16) {
                 Image(systemName: "person.fill")
                     .foregroundColor(.accentColor)
@@ -68,7 +66,6 @@ extension SignUpView {
             
             Divider().padding(.leading, 56).opacity(0.2)
             
-            // Email field
             HStack(spacing: 16) {
                 Image(systemName: "envelope.fill")
                     .foregroundColor(.accentColor)
@@ -84,7 +81,6 @@ extension SignUpView {
             
             Divider().padding(.leading, 56).opacity(0.2)
             
-            // Password field
             HStack(spacing: 16) {
                 Image(systemName: "lock.fill")
                     .foregroundColor(.accentColor)
@@ -133,7 +129,6 @@ extension SignUpView {
                         .cornerRadius(12)
                 }
             } else {
-                // Quota Full State
                 VStack(spacing: 8) {
                     Text("Pilot Quota Full")
                         .font(.headline)
@@ -157,3 +152,4 @@ extension SignUpView {
             .environmentObject(AuthStore())
     }
 }
+

@@ -24,7 +24,7 @@ class AuthStore: ObservableObject {
         
         if !allUsers.contains(where: { $0.email == adminEmail }) {
             let admin = User(
-                name: "Dhruv Patel",
+                name: "Admin User",
                 email: adminEmail,
                 hashedPassword: hash(adminPassword)
             )
@@ -112,3 +112,4 @@ class AuthStore: ObservableObject {
         }
     }
 }
+

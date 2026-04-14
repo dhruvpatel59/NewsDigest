@@ -31,7 +31,6 @@ enum NewsCategory: String, CaseIterable, Identifiable {
         }
     }
     
-    // Refined, cohesive palette — all derived from the same cool-neutral family
     var tint: Color {
         switch self {
         case .general:       return Color(red: 0.35, green: 0.45, blue: 0.62)
@@ -46,3 +45,4 @@ enum NewsCategory: String, CaseIterable, Identifiable {
         }
     }
 }
+

@@ -1,8 +1,5 @@
 internal import SwiftUI
 
-// MARK: - AI Summary Sheet
-// A high-performance, Apple-standard design for the Pulse News AI engine.
-// Focuses on typography, depth, and staggered animations.
 
 struct AISummarySheet: View {
     let article: Article
@@ -19,10 +16,8 @@ struct AISummarySheet: View {
     
     var body: some View {
         ZStack {
-            // Background Layer: Premium Adaptive Background
             Color(uiColor: .systemBackground).ignoresSafeArea()
             
-            // Subtle adaptive gradient for depth
             LinearGradient(
                 colors: [Color.blue.opacity(0.12), Color.clear],
                 startPoint: .topLeading,
@@ -30,7 +25,6 @@ struct AISummarySheet: View {
             ).ignoresSafeArea()
             
             VStack(spacing: 0) {
-                // Drag Indicator
                 Capsule()
                     .fill(Color.secondary.opacity(0.3))
                     .frame(width: 36, height: 5)
@@ -39,7 +33,6 @@ struct AISummarySheet: View {
                 ScrollView(showsIndicators: false) {
                     VStack(alignment: .leading, spacing: 32) {
                         
-                        // Header Section
                         VStack(alignment: .leading, spacing: 12) {
                             HStack(spacing: 12) {
                                 ZStack {
@@ -68,7 +61,6 @@ struct AISummarySheet: View {
                                 
                                 if summaryText != nil {
                                     HStack(spacing: 8) {
-                                        // Persona Selector
                                         Menu {
                                             ForEach(AudioPersona.available) { persona in
                                                 Button {
@@ -94,7 +86,6 @@ struct AISummarySheet: View {
                                             .background(Capsule().fill(Color.blue.opacity(0.1)))
                                         }
                                         
-                                        // Audio Briefing Button
                                         Button {
                                             AudioBriefingService.shared.speak(article: article, summary: summaryText ?? "")
                                         } label: {
@@ -106,7 +97,6 @@ struct AISummarySheet: View {
                                                 .symbolEffect(.bounce, value: AudioBriefingService.shared.isPlaying)
                                         }
                                         
-                                        // Share Button
                                         Button {
                                             ArticleImageSharer.share(article, aiSummary: summaryText, analysis: perspectiveAnalysis)
                                         } label: {
@@ -128,12 +118,10 @@ struct AISummarySheet: View {
                         }
                         .padding(.top, 20)
                         
-                        // Divider
                         Rectangle()
                             .fill(LinearGradient(colors: [.blue.opacity(0.2), .clear], startPoint: .leading, endPoint: .trailing))
                             .frame(height: 1)
                         
-                        // Main Content Area
                         Group {
                             if let error = errorMessage {
                                 errorState(msg: error)
@@ -154,7 +142,6 @@ struct AISummarySheet: View {
                             }
                         }
                         
-                        // Layout Spacer: Ensures list content clears the floating button
                         Spacer(minLength: 120)
                     }
                     .padding(.horizontal, 24)
@@ -166,7 +153,6 @@ struct AISummarySheet: View {
         }
     }
     
-    // MARK: - Subviews
     
     private func successState(points: [String]) -> some View {
         VStack(alignment: .leading, spacing: 28) {
@@ -223,7 +209,6 @@ struct AISummarySheet: View {
             isLoading = true
             errorMessage = nil
             
-            // Single consolidated request to avoid 429 rate limits
             let analysis = try await AISummarizerService.shared.generateFullInsight(article: article)
             
             withAnimation(.spring(response: 0.6, dampingFraction: 0.8)) {
@@ -239,3 +224,4 @@ struct AISummarySheet: View {
         }
     }
 }
+

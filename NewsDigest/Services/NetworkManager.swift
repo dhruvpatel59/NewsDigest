@@ -16,7 +16,6 @@ enum NetworkError: Error, LocalizedError {
     }
 }
 
-// Actor provides built-in concurrency safety
 actor NetworkManager {
     static let shared = NetworkManager()
     private init() {}
@@ -62,3 +61,4 @@ actor NetworkManager {
         }
     }
 }
+
