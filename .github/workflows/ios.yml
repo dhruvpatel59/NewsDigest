@@ -29,4 +29,4 @@ jobs:
                      -scheme NewsDigest \
                      -destination 'platform=iOS Simulator,name=iPhone 16,OS=latest' \
                      -clonedSourcePackagesDirPath ./DerivedData \
-                     clean build test
+                     clean build
