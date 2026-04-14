@@ -1,4 +1,4 @@
-import SwiftUI
+internal import SwiftUI
 
 // MARK: - Shimmer Loading Skeleton
 struct ShimmerModifier: ViewModifier {

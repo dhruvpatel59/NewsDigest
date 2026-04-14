@@ -1,4 +1,4 @@
-import SwiftUI
+internal import SwiftUI
 
 // MARK: - AI Summary Sheet
 // A high-performance, Apple-standard design for the Pulse News AI engine.

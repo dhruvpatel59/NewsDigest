@@ -1,4 +1,4 @@
-import SwiftUI
+internal import SwiftUI
 
 struct ExploreView: View {
     @EnvironmentObject var bookmarkStore: BookmarkStore

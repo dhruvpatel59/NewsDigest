@@ -1,4 +1,4 @@
-import SwiftUI
+internal import SwiftUI
 
 // MARK: - Trending Topics Bar
 // Horizontal scrolling pill chips. Tapping a topic fetches articles for it.

@@ -1,4 +1,4 @@
-import SwiftUI
+internal import SwiftUI
 
 struct ProfileView: View {
     @EnvironmentObject var authStore: AuthStore

@@ -15,22 +15,24 @@ class KeychainManager {
         let query: [String: Any] = [
             kSecClass as String: kSecClassGenericPassword,
             kSecAttrService as String: service,
-            kSecAttrAccount as String: account,
-            kSecValueData as String: data
+            kSecAttrAccount as String: account
         ]
         
-        let status = SecItemAdd(query as CFDictionary, nil)
+        let attributesToUpdate: [String: Any] = [
+            kSecValueData as String: data,
+            kSecAttrAccessible as String: kSecAttrAccessibleAfterFirstUnlock
+        ]
+        
+        let status = SecItemAdd(query.merging(attributesToUpdate) { (_, new) in new } as CFDictionary, nil)
         
         if status == errSecDuplicateItem {
-            // Update existing item
-            let attributesToUpdate: [String: Any] = [
-                kSecValueData as String: data
-            ]
             let updateStatus = SecItemUpdate(query as CFDictionary, attributesToUpdate as CFDictionary)
             if updateStatus != errSecSuccess {
+                print("--- Keychain Error: Update failed with status \(updateStatus) ---")
                 throw KeychainError.unexpectedStatus(updateStatus)
             }
         } else if status != errSecSuccess {
+            print("--- Keychain Error: Save failed with status \(status) ---")
             throw KeychainError.unexpectedStatus(status)
         }
     }

@@ -1,4 +1,4 @@
-import SwiftUI
+internal import SwiftUI
 
 struct ArticleCardView: View {
     let article: Article

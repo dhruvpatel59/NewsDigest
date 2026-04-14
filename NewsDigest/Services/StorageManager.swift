@@ -24,7 +24,7 @@ actor StorageManager {
             let url = getURL(for: key)
             try encoded.write(to: url, options: .atomic)
         } catch {
-            print("--- StorageManager Error Saving \(key): \(error.localizedDescription) ---")
+            print("--- StorageManager Error Saving Data ---")
         }
     }
     
@@ -36,7 +36,7 @@ actor StorageManager {
             let data = try Data(contentsOf: url)
             return try decoder.decode(T.self, from: data)
         } catch {
-            print("--- StorageManager Error Loading \(key): \(error.localizedDescription) ---")
+            print("--- StorageManager Error Loading Data ---")
             return nil
         }
     }

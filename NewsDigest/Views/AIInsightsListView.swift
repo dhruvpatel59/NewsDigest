@@ -1,4 +1,4 @@
-import SwiftUI
+internal import SwiftUI
 
 struct AIInsightsListView: View {
     @EnvironmentObject var insightStore: AIInsightStore

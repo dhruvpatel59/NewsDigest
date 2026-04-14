@@ -1,4 +1,4 @@
-import SwiftUI
+internal import SwiftUI
 
 enum StorageKeys {
     static let isDarkMode = "isDarkModeEnabled"

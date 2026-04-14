@@ -1,51 +1,6 @@
 import Foundation
 import Combine
-import SwiftUI
 internal import CoreLocation
-
-// MARK: - Gemini API Request/Response Models
-
-struct GeminiRequest: Encodable {
-    let contents: [GeminiContent]
-    let safetySettings: [GeminiSafetySetting]?
-}
-
-struct GeminiContent: Encodable {
-    let parts: [GeminiPart]
-}
-
-struct GeminiPart: Encodable {
-    let text: String
-}
-
-struct GeminiSafetySetting: Encodable {
-    let category: String
-    let threshold: String
-}
-
-struct GeminiResponse: Decodable {
-    let candidates: [GeminiCandidate]?
-    let error: GeminiErrorResponse?
-}
-
-struct GeminiErrorResponse: Decodable {
-    let code: Int?
-    let message: String?
-    let status: String?
-}
-
-struct GeminiCandidate: Decodable {
-    let content: GeminiContentResponse?
-    let finishReason: String?
-}
-
-struct GeminiContentResponse: Decodable {
-    let parts: [GeminiPartResponse]?
-}
-
-struct GeminiPartResponse: Decodable {
-    let text: String?
-}
 
 // MARK: - Service
 
@@ -61,7 +16,6 @@ class AISummarizerService: ObservableObject {
         case invalidURL
         case networkError(String)
         case noData
-        case decodingError
         
         var errorDescription: String? {
             switch self {
@@ -69,7 +23,6 @@ class AISummarizerService: ObservableObject {
             case .invalidURL: return "Invalid API configuration."
             case .networkError(let msg): return msg
             case .noData: return "No data received from the AI."
-            case .decodingError: return "Failed to parse the summary."
             }
         }
     }

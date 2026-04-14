@@ -22,10 +22,11 @@ DerivedData
 # Pulse News Secrets
 #
 .env
-PulseSecrets.swift
 Secrets.plist
 keys/
 config/*.json
+!.env.example
+!Secrets.plist.example
 
 # Dependency Managers
 #

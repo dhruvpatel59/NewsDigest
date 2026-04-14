@@ -1,4 +1,4 @@
-import SwiftUI
+internal import SwiftUI
 
 // MARK: - Styled Section Header
 struct SectionHeaderView: View {

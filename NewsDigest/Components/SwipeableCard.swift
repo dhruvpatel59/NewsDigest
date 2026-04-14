@@ -1,4 +1,4 @@
-import SwiftUI
+internal import SwiftUI
 
 // MARK: - Direct Swipe Action Modifier
 // No visible buttons. Swipe left → bookmark. Swipe right → share.

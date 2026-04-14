@@ -1,4 +1,4 @@
-import SwiftUI
+internal import SwiftUI
 
 enum NewsCategory: String, CaseIterable, Identifiable {
     case general

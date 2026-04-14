@@ -1,4 +1,4 @@
-import SwiftUI
+internal import SwiftUI
 
 struct BroadcastersView: View {
     @StateObject private var broadcasterStore = BroadcasterStore()

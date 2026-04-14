@@ -1,5 +1,49 @@
 import Foundation
 
+// MARK: - Gemini API Request/Response Models
+
+struct GeminiRequest: Encodable {
+    let contents: [GeminiContent]
+    let safetySettings: [GeminiSafetySetting]?
+}
+
+struct GeminiContent: Encodable {
+    let parts: [GeminiPart]
+}
+
+struct GeminiPart: Encodable {
+    let text: String
+}
+
+struct GeminiSafetySetting: Encodable {
+    let category: String
+    let threshold: String
+}
+
+struct GeminiResponse: Decodable {
+    let candidates: [GeminiCandidate]?
+    let error: GeminiErrorResponse?
+}
+
+struct GeminiErrorResponse: Decodable {
+    let code: Int?
+    let message: String?
+    let status: String?
+}
+
+struct GeminiCandidate: Decodable {
+    let content: GeminiContentResponse?
+    let finishReason: String?
+}
+
+struct GeminiContentResponse: Decodable {
+    let parts: [GeminiPartResponse]?
+}
+
+struct GeminiPartResponse: Decodable {
+    let text: String?
+}
+
 class GeminiProvider: SummaryProvider {
     private var apiKey: String { AppConfig.geminiAPIKey }
     

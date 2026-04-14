@@ -1,4 +1,4 @@
-import SwiftUI
+internal import SwiftUI
 
 struct OfflineView: View {
     let onRetry: () -> Void

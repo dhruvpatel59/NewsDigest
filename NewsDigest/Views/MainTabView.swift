@@ -1,4 +1,4 @@
-import SwiftUI
+internal import SwiftUI
 
 struct MainTabView: View {
     @EnvironmentObject var authStore: AuthStore

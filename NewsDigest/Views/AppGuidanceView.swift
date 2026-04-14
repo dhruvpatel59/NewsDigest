@@ -1,4 +1,4 @@
-import SwiftUI
+internal import SwiftUI
 
 struct AppGuidanceView: View {
     @Environment(\.dismiss) var dismiss

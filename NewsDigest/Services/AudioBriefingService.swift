@@ -1,7 +1,7 @@
 import Foundation
 import AVFoundation
 import ActivityKit
-import SwiftUI
+internal import SwiftUI
 import Combine
 
 class AudioBriefingService: NSObject, ObservableObject, AVSpeechSynthesizerDelegate {

@@ -1,4 +1,4 @@
-import SwiftUI
+internal import SwiftUI
 
 // MARK: - Shareable Article Card
 // A standalone card designed for image export. Does NOT depend on

@@ -1,6 +1,6 @@
 import Foundation
 import Combine
-import SwiftUI
+internal import SwiftUI
 
 class ReadingHistoryStore: ObservableObject {
     @Published var history: [Article] = []

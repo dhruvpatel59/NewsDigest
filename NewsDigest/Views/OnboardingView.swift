@@ -1,4 +1,4 @@
-import SwiftUI
+internal import SwiftUI
 
 struct OnboardingView: View {
     @AppStorage("hasCompletedOnboarding") private var hasCompletedOnboarding = false

@@ -1,4 +1,4 @@
-import SwiftUI
+internal import SwiftUI
 
 struct AddBroadcasterView: View {
     @ObservedObject var store: BroadcasterStore

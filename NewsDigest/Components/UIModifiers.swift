@@ -1,4 +1,4 @@
-import SwiftUI
+internal import SwiftUI
 
 struct PremiumBackgroundModifier: ViewModifier {
     func body(content: Content) -> some View {

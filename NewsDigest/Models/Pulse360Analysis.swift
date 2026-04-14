@@ -1,5 +1,5 @@
 import Foundation
-import SwiftUI
+internal import SwiftUI
 
 struct Pulse360Analysis: Codable, Hashable {
     let summaryPoints: [String]

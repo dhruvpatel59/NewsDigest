@@ -1,6 +1,6 @@
 import Foundation
 import Combine
-import SwiftUI
+internal import SwiftUI
 
 class BookmarkStore: ObservableObject {
     @Published var savedArticles: [Article] = []

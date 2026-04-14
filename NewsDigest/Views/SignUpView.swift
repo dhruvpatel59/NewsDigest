@@ -1,4 +1,4 @@
-import SwiftUI
+internal import SwiftUI
 
 struct SignUpView: View {
     @EnvironmentObject var authStore: AuthStore

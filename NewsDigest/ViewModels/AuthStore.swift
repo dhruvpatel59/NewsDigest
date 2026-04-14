@@ -1,6 +1,5 @@
 import Foundation
 import Combine
-import SwiftUI
 import CryptoKit
 
 class AuthStore: ObservableObject {
@@ -19,14 +18,15 @@ class AuthStore: ObservableObject {
     }
     
     private func seedAdminAccount() {
-        let adminEmail = PulseSecrets.adminEmail.lowercased()
+        let adminEmail = PulseSecrets.adminEmail.trimmingCharacters(in: .whitespacesAndNewlines).lowercased()
+        let adminPassword = PulseSecrets.adminDefaultPassword.trimmingCharacters(in: .whitespacesAndNewlines)
         var allUsers = fetchAllUsers()
         
         if !allUsers.contains(where: { $0.email == adminEmail }) {
             let admin = User(
                 name: "Dhruv Patel",
                 email: adminEmail,
-                hashedPassword: hash(PulseSecrets.adminDefaultPassword)
+                hashedPassword: hash(adminPassword)
             )
             allUsers.append(admin)
             saveAllUsers(allUsers)
@@ -42,13 +42,15 @@ class AuthStore: ObservableObject {
     }
     
     func register(name: String, email: String, passwordRaw: String) -> Bool {
+        let cleanEmail = email.trimmingCharacters(in: .whitespacesAndNewlines).lowercased()
+        let cleanPassword = passwordRaw.trimmingCharacters(in: .whitespacesAndNewlines)
         var allUsers = fetchAllUsers()
         
         if allUsers.count >= maxUserLimit {
             return false
         }
         
-        let newUser = User(name: name, email: email.lowercased(), hashedPassword: hash(passwordRaw))
+        let newUser = User(name: name, email: cleanEmail, hashedPassword: hash(cleanPassword))
         
         if allUsers.contains(where: { $0.email == newUser.email }) {
             return false
@@ -57,14 +59,17 @@ class AuthStore: ObservableObject {
         allUsers.append(newUser)
         saveAllUsers(allUsers)
         
-        return login(email: email, passwordRaw: passwordRaw)
+        return login(email: cleanEmail, passwordRaw: cleanPassword)
     }
     
     func login(email: String, passwordRaw: String) -> Bool {
-        let allUsers = fetchAllUsers()
-        let hashedInput = hash(passwordRaw)
+        let cleanEmail = email.trimmingCharacters(in: .whitespacesAndNewlines).lowercased()
+        let cleanPassword = passwordRaw.trimmingCharacters(in: .whitespacesAndNewlines)
         
-        if let user = allUsers.first(where: { $0.email == email.lowercased() && $0.hashedPassword == hashedInput }) {
+        let allUsers = fetchAllUsers()
+        let hashedInput = hash(cleanPassword)
+        
+        if let user = allUsers.first(where: { $0.email == cleanEmail && $0.hashedPassword == hashedInput }) {
             self.currentUser = user
             self.isAuthenticated = true
             
